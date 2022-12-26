@@ -1,0 +1,53 @@
+{
+  "author": {
+    "email": "trejgun+gemunion@gmail.com",
+    "name": "TrejGun",
+    "url": "https://gemunion.io/"
+  },
+  "dependencies": {
+    "lerna": "6.1.0",
+    "nx": "15.3.3"
+  },
+  "devDependencies": {
+    "@gemunion/eslint-config": "2.0.5",
+    "@types/node": "18.11.16",
+    "@typescript-eslint/eslint-plugin": "5.46.1",
+    "@typescript-eslint/parser": "5.46.1",
+    "eslint": "8.30.0",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-config-standard": "17.0.0",
+    "eslint-import-resolver-typescript": "3.5.2",
+    "eslint-plugin-import": "2.26.0",
+    "eslint-plugin-mocha": "10.1.0",
+    "eslint-plugin-n": "15.6.0",
+    "eslint-plugin-prettier": "4.2.1",
+    "eslint-plugin-promise": "6.1.1",
+    "eslint-plugin-testing-library": "5.9.1",
+    "husky": "4.3.8",
+    "lint-staged": "13.1.0",
+    "prettier": "2.8.1",
+    "prettier-plugin-solidity": "1.1.0",
+    "typescript": "4.9.4"
+  },
+  "engines": {
+    "node": ">=12.13"
+  },
+  "license": "UNLICENSED",
+  "name": "@gemunion/contracts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gemunion/contracts"
+  },
+  "scripts": {
+    "bootstrap": "lerna bootstrap --concurrency 1 --hoist --ignore-scripts",
+    "build": "lerna run build --concurrency 1",
+    "clean": "sh scripts/clean.sh",
+    "lint": "lerna run lint --stream",
+    "precommit": "lint-staged",
+    "release": "npm run release:version && npm run release:publish",
+    "release:publish": "lerna publish from-package --yes --exact --ignore-scripts --registry=https://npm.pkg.github.com/",
+    "release:version": "lerna version",
+    "test": "sh scripts/test.sh"
+  },
+  "version": "1.0.0"
+}

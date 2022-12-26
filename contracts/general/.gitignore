@@ -1,0 +1,25 @@
+# Project
+/typechain-types
+/besu
+/cache
+/artifacts
+/coverage
+/abi
+/sol
+
+# IDE
+.idea
+.vscode
+
+# OS
+.DS_Store
+
+# NODE
+node_modules/
+npm-debug.log
+package-lock.json
+yarn.lock
+/report.*.json
+
+.env
+coverage.json

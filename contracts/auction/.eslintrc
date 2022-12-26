@@ -1,0 +1,23 @@
+{
+  "extends": [
+    "@gemunion/eslint-config/presets/ts",
+    "@gemunion/eslint-config/tests/mocha"
+  ],
+  "parserOptions": {
+    "project": "./tsconfig.test.json"
+  },
+  "root": true,
+  "rules": {
+    "@typescript-eslint/restrict-template-expressions": "off",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "**/*"
+        ]
+      }
+    ],
+    "mocha/no-exports": "off",
+    "mocha/no-setup-in-describe": "off"
+  }
+}

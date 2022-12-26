@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
+  },
+  "extends": "./tsconfig.json",
+  "exclude": ["node_modules", "dist", "hardhat.config.ts"]
+}
