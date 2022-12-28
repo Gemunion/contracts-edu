@@ -1,70 +1,65 @@
 import { expect, use } from "chai";
 import { solidity } from "ethereum-waffle";
-import { ethers } from "hardhat";
-import { parseEther } from "ethers/lib/utils";
-import { ContractFactory, ContractTransaction } from "ethers";
+import { ethers, network } from "hardhat";
+import { ContractTransaction, utils } from "ethers";
+import { loadFixture } from "@nomicfoundation/hardhat-network-helpers";
 
 import { decimals, MINTER_ROLE, tokenName, tokenSymbol } from "@gemunion/contracts-constants";
 
-import { ChainLinkLootboxMock, ChainLinkTokenMock, LINK, VRFCoordinatorMock } from "../typechain-types";
+import { LINK, VRFCoordinatorMock } from "../typechain-types";
+import { deployERC721 } from "./fixtures";
+import { deployLinkVrfFixture } from "./link";
 
 const linkAmountInWei = ethers.BigNumber.from("1000").mul(decimals);
 
 use(solidity);
 
 describe("LootBox", function () {
-  let vrf: ContractFactory;
   let vrfInstance: VRFCoordinatorMock;
-  let link: ContractFactory;
   let linkInstance: LINK;
 
-  let nft: ContractFactory;
-  let nftInstance: ChainLinkTokenMock;
-  let lootbox: ContractFactory;
-  let lootInstance: ChainLinkLootboxMock;
   this.timeout(42000);
 
-  beforeEach(async function () {
-    const [owner] = await ethers.getSigners();
+  const keyHash = "0xcaf3c3727e033261d383b315559476f48034c13b18f8cafed4d871abe5049186";
+  const fee = utils.parseEther("0.1");
 
-    link = await ethers.getContractFactory("LINK");
-    linkInstance = (await link.deploy(tokenName, tokenSymbol)) as LINK;
-    await linkInstance.mint(owner.address, linkAmountInWei);
-    vrf = await ethers.getContractFactory("VRFCoordinatorMock");
-    vrfInstance = (await vrf.deploy(linkInstance.address)) as VRFCoordinatorMock;
+  before(async function () {
+    await network.provider.send("hardhat_reset");
 
-    nft = await ethers.getContractFactory("ChainLinkTokenMock");
-    lootbox = await ethers.getContractFactory("ChainLinkLootboxMock");
-
-    const keyHash = "0xcaf3c3727e033261d383b315559476f48034c13b18f8cafed4d871abe5049186";
-    const fee = parseEther("0.1");
-    nftInstance = (await nft.deploy(
-      tokenName,
-      tokenSymbol,
-      vrfInstance.address,
-      linkInstance.address,
-      keyHash,
-      fee,
-    )) as ChainLinkTokenMock;
-
-    lootInstance = (await lootbox.deploy(tokenName, tokenSymbol)) as ChainLinkLootboxMock;
+    // https://github.com/NomicFoundation/hardhat/issues/2980
+    ({ linkInstance, vrfInstance } = await loadFixture(function mysterybox() {
+      return deployLinkVrfFixture();
+    }));
   });
+
+  const factory = () => deployERC721("ChainLinkLootboxMock", tokenName, tokenSymbol);
+  const erc721Factory = () =>
+    deployERC721("ChainLinkTokenMock", tokenName, tokenSymbol, vrfInstance.address, linkInstance.address, keyHash, fee);
 
   describe("Factory", function () {
     it("should fail not a contract", async function () {
       const [_owner, receiver] = await ethers.getSigners();
+
+      const lootInstance = await factory();
 
       const tx = lootInstance.setFactory(receiver.address);
       await expect(tx).to.be.revertedWith(`LootBox: the factory must be a deployed contract`);
     });
 
     it("Should set factory address", async function () {
+      const lootInstance = await factory();
+
+      const nftInstance = await erc721Factory();
+
       const tx = lootInstance.setFactory(nftInstance.address);
       await expect(tx).to.not.be.reverted;
     });
 
     it("Should set the right roles for lootbox", async function () {
       const [owner] = await ethers.getSigners();
+
+      const lootInstance = await factory();
+      const nftInstance = await erc721Factory();
 
       const tx = nftInstance.grantRole(MINTER_ROLE, lootInstance.address);
       await expect(tx).to.emit(nftInstance, "RoleGranted").withArgs(MINTER_ROLE, lootInstance.address, owner.address);
@@ -78,6 +73,9 @@ describe("LootBox", function () {
     it("should fail not owner of token", async function () {
       const [owner, receiver] = await ethers.getSigners();
 
+      const lootInstance = await factory();
+      const nftInstance = await erc721Factory();
+
       await nftInstance.grantRole(MINTER_ROLE, lootInstance.address);
       await lootInstance.setFactory(nftInstance.address);
       await lootInstance.mint(owner.address);
@@ -87,6 +85,9 @@ describe("LootBox", function () {
 
     it("should fail not enough LINK", async function () {
       const [owner] = await ethers.getSigners();
+
+      const lootInstance = await factory();
+      const nftInstance = await erc721Factory();
 
       await nftInstance.grantRole(MINTER_ROLE, lootInstance.address);
       await lootInstance.setFactory(nftInstance.address);
@@ -102,15 +103,22 @@ describe("LootBox", function () {
     it("should mint token", async function () {
       const [owner] = await ethers.getSigners();
 
-      const txx: ContractTransaction = await nftInstance.mint(owner.address);
-      await txx.wait();
+      const nftInstance = await erc721Factory();
 
-      const balanceOfOwner1 = await nftInstance.balanceOf(owner.address);
-      expect(balanceOfOwner1).to.equal(1);
+      const tx = await nftInstance.mint(owner.address);
+      await tx.wait();
+
+      const balanceOfOwner = await nftInstance.balanceOf(owner.address);
+      expect(balanceOfOwner).to.equal(1);
     });
 
     it("should unpack own tokens using random", async function () {
       const [owner] = await ethers.getSigners();
+
+      const lootInstance = await factory();
+      const nftInstance = await erc721Factory();
+
+      await linkInstance.mint(owner.address, linkAmountInWei);
 
       await nftInstance.grantRole(MINTER_ROLE, lootInstance.address);
       await nftInstance.grantRole(MINTER_ROLE, vrfInstance.address);
@@ -168,7 +176,7 @@ describe("LootBox", function () {
       await expect(tx).to.emit(lootInstance, "Transfer").withArgs(owner.address, ethers.constants.AddressZero, 0);
       await expect(tx)
         .to.emit(linkInstance, "Transfer")
-        .withArgs(nftInstance.address, vrfInstance.address, parseEther("0.1"));
+        .withArgs(nftInstance.address, vrfInstance.address, utils.parseEther("0.1"));
 
       await expect(tx).to.emit(nftInstance, "RandomRequest");
       const eventFilter = nftInstance.filters.RandomRequest();
