@@ -5,8 +5,8 @@
     "url": "https://gemunion.io/"
   },
   "dependencies": {
-    "@gemunion/contracts-constants": "1.1.5",
-    "@gemunion/contracts-erc721": "1.1.13"
+    "@gemunion/contracts-constants": "1.1.8",
+    "@gemunion/contracts-erc721": "1.1.16"
   },
   "description": "Collection of contracts and presets",
   "devDependencies": {
