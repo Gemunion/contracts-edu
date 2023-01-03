@@ -9,7 +9,7 @@
     "@gemunion/contracts-erc1155": "1.1.19",
     "@gemunion/contracts-erc20": "1.1.14",
     "@gemunion/contracts-erc721": "1.1.16",
-    "@gemunion/contracts-mocha": "1.1.9",
+    "@gemunion/contracts-mocha": "1.1.10",
     "@gemunion/utils": "1.1.0"
   },
   "description": "Collection of contracts and presets",

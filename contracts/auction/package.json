@@ -10,6 +10,7 @@
   },
   "description": "Collection of contracts and presets",
   "devDependencies": {
+    "@gemunion/contracts-mocha": "1.1.10",
     "@ethersproject/networks": "5.7.1",
     "@nomiclabs/hardhat-ethers": "2.2.1",
     "@nomiclabs/hardhat-etherscan": "3.1.4",
