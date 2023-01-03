@@ -17,8 +17,6 @@ describe("LootBox", function () {
   let vrfInstance: VRFCoordinatorMock;
   let linkInstance: LinkToken;
 
-  this.timeout(42000);
-
   const keyHash = "0xcaf3c3727e033261d383b315559476f48034c13b18f8cafed4d871abe5049186";
   const fee = utils.parseEther("0.1");
 
