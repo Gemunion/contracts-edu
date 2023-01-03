@@ -1,14 +1,13 @@
 import { expect, use } from "chai";
 import { solidity } from "ethereum-waffle";
 import { ethers, network } from "hardhat";
-import { ContractTransaction, utils } from "ethers";
+import { utils } from "ethers";
 import { loadFixture } from "@nomicfoundation/hardhat-network-helpers";
 
 import { decimals, MINTER_ROLE, tokenName, tokenSymbol } from "@gemunion/contracts-constants";
 
-import { LINK, VRFCoordinatorMock } from "../typechain-types";
-import { deployERC721 } from "./fixtures";
-import { deployLinkVrfFixture } from "./link";
+import { LinkToken, VRFCoordinatorMock } from "../typechain-types";
+import { deployERC721, deployLinkVrfFixture } from "../src";
 
 const linkAmountInWei = ethers.BigNumber.from("1000").mul(decimals);
 
@@ -16,7 +15,7 @@ use(solidity);
 
 describe("LootBox", function () {
   let vrfInstance: VRFCoordinatorMock;
-  let linkInstance: LINK;
+  let linkInstance: LinkToken;
 
   this.timeout(42000);
 
@@ -118,12 +117,10 @@ describe("LootBox", function () {
       const lootInstance = await factory();
       const nftInstance = await erc721Factory();
 
-      await linkInstance.mint(owner.address, linkAmountInWei);
-
       await nftInstance.grantRole(MINTER_ROLE, lootInstance.address);
       await nftInstance.grantRole(MINTER_ROLE, vrfInstance.address);
       await lootInstance.setFactory(nftInstance.address);
-      const txx: ContractTransaction = await lootInstance.mint(owner.address);
+      const txx = await lootInstance.mint(owner.address);
       await txx.wait();
 
       const balanceOfOwner1 = await lootInstance.balanceOf(owner.address);
@@ -132,10 +129,10 @@ describe("LootBox", function () {
       const balanceOfOwner2 = await nftInstance.balanceOf(owner.address);
       expect(balanceOfOwner2).to.equal(0);
 
-      const txr: ContractTransaction = await linkInstance.transfer(nftInstance.address, linkAmountInWei);
+      const txr = await linkInstance.transfer(nftInstance.address, linkAmountInWei);
       await txr.wait();
 
-      const nftInstanceBalance = await linkInstance.balanceOf(nftInstance.address);
+      const nftInstanceBalance = await linkInstance.callStatic.balanceOf(nftInstance.address);
       expect(nftInstanceBalance).to.equal(linkAmountInWei);
 
       // Create connection to LINK token contract and initiate the transfer
@@ -170,12 +167,12 @@ describe("LootBox", function () {
       //   console.info("Contract ", nftInstance.address, " funded with 1 LINK. Transaction Hash: ", transaction.hash);
       // });
 
-      const tx: ContractTransaction = await lootInstance.unpack(0);
+      const tx = await lootInstance.unpack(0);
       await tx.wait();
 
       await expect(tx).to.emit(lootInstance, "Transfer").withArgs(owner.address, ethers.constants.AddressZero, 0);
       await expect(tx)
-        .to.emit(linkInstance, "Transfer")
+        .to.emit(linkInstance, "Transfer(address,address,uint256)")
         .withArgs(nftInstance.address, vrfInstance.address, utils.parseEther("0.1"));
 
       await expect(tx).to.emit(nftInstance, "RandomRequest");

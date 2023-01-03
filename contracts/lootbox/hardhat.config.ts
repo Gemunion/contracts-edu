@@ -66,13 +66,20 @@ export default {
     },
   },
   solidity: {
-    version: "0.8.9",
-    settings: {
-      optimizer: {
-        enabled: true,
-        runs: 1000,
+    compilers: [
+      {
+        version: "0.4.18",
       },
-    },
+      {
+        version: "0.8.9",
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 1000, // DO NOT CHANGE
+          },
+        },
+      },
+    ],
   },
   etherscan: {
     apiKey: process.env.ETHERSCAN_API_KEY,

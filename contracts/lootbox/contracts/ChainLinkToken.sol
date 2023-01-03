@@ -8,10 +8,12 @@ pragma solidity ^0.8.9;
 
 import "@openzeppelin/contracts/utils/Counters.sol";
 
-import "@gemunion/contracts-chain-link/contracts/extensions/ERC721ChainLink.sol";
+import "@gemunion/contracts-chain-link/contracts/extensions/ChainLinkTest.sol";
 import "@gemunion/contracts-erc721-enumerable/contracts/preset/ERC721ABCE.sol";
 
-contract ChainLinkTokenMock is ERC721ChainLink, IERC721ChainLink, ERC721ABCE {
+import "./interfaces/IERC721ChainLink.sol";
+
+contract ChainLinkTokenMock is ChainLinkTest, IERC721ChainLink, ERC721ABCE {
   using Counters for Counters.Counter;
 
   // tokenId => rarity
@@ -26,7 +28,7 @@ contract ChainLinkTokenMock is ERC721ChainLink, IERC721ChainLink, ERC721ABCE {
     address vrf,
     bytes32 keyHash,
     uint256 fee
-  ) ERC721ABCE(name, symbol, 1000) ERC721ChainLink(link, vrf, keyHash, fee) {}
+  ) ERC721ABCE(name, symbol, 1000) ChainLinkTest(link, vrf, keyHash, fee) {}
 
   function mintRandom(address to) external override onlyRole(MINTER_ROLE) {
     _queue[getRandomNumber()] = to;
@@ -40,8 +42,6 @@ contract ChainLinkTokenMock is ERC721ChainLink, IERC721ChainLink, ERC721ABCE {
     mint(_queue[requestId]);
     delete _queue[requestId];
   }
-
-  event RandomRequest(bytes32 requestId);
 
   function getRandomNumber() internal override returns (bytes32 requestId) {
     requestId = super.getRandomNumber();
