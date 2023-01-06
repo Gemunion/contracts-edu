@@ -1,42 +1,25 @@
 import { expect, use } from "chai";
 import { solidity } from "ethereum-waffle";
 import { ethers } from "hardhat";
-import { ContractFactory } from "ethers";
-import { Network } from "@ethersproject/networks";
-import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers";
 
-import { amount, MINTER_ROLE, nonce, tokenName, tokenSymbol } from "@gemunion/contracts-constants";
+import { amount, MINTER_ROLE, nonce, tokenName } from "@gemunion/contracts-constants";
 
-import { EIP712ERC20, ERC20AB } from "../../typechain-types";
+import { deployDropbox, deployErc20 } from "./shared/fixtures";
 
 use(solidity);
 
 describe("EIP712ERC20", function () {
-  let erc20: ContractFactory;
-  let erc20Instance: ERC20AB;
-  let dropbox: ContractFactory;
-  let dropboxInstance: EIP712ERC20;
-  let owner: SignerWithAddress;
-  let receiver: SignerWithAddress;
-  let stranger: SignerWithAddress;
-  let network: Network;
-
-  beforeEach(async function () {
-    erc20 = await ethers.getContractFactory("ERC20AB");
-    dropbox = await ethers.getContractFactory("EIP712ERC20");
-    [owner, receiver, stranger] = await ethers.getSigners();
-
-    erc20Instance = (await erc20.deploy(tokenName, tokenSymbol)) as ERC20AB;
-    dropboxInstance = (await dropbox.deploy(tokenName)) as EIP712ERC20;
-
-    await dropboxInstance.grantRole(MINTER_ROLE, owner.address);
-    await erc20Instance.grantRole(MINTER_ROLE, dropboxInstance.address);
-
-    network = await ethers.provider.getNetwork();
-  });
-
   describe("redeem", function () {
     it("should redeem", async function () {
+      const [owner, receiver, stranger] = await ethers.getSigners();
+      const network = await ethers.provider.getNetwork();
+
+      const erc20Instance = await deployErc20();
+      const dropboxInstance = await deployDropbox("EIP712ERC20");
+
+      await dropboxInstance.grantRole(MINTER_ROLE, owner.address);
+      await erc20Instance.grantRole(MINTER_ROLE, dropboxInstance.address);
+
       const signature = await owner._signTypedData(
         // Domain
         {
@@ -72,6 +55,15 @@ describe("EIP712ERC20", function () {
     });
 
     it("should fail: duplicate mint", async function () {
+      const [owner, receiver, stranger] = await ethers.getSigners();
+      const network = await ethers.provider.getNetwork();
+
+      const erc20Instance = await deployErc20();
+      const dropboxInstance = await deployDropbox("EIP712ERC20");
+
+      await dropboxInstance.grantRole(MINTER_ROLE, owner.address);
+      await erc20Instance.grantRole(MINTER_ROLE, dropboxInstance.address);
+
       const signature = await owner._signTypedData(
         // Domain
         {
@@ -112,6 +104,15 @@ describe("EIP712ERC20", function () {
     });
 
     it("should fail: Invalid signature", async function () {
+      const [owner, receiver, stranger] = await ethers.getSigners();
+      const network = await ethers.provider.getNetwork();
+
+      const erc20Instance = await deployErc20();
+      const dropboxInstance = await deployDropbox("EIP712ERC20");
+
+      await dropboxInstance.grantRole(MINTER_ROLE, owner.address);
+      await erc20Instance.grantRole(MINTER_ROLE, dropboxInstance.address);
+
       const signature = await owner._signTypedData(
         // Domain
         {
@@ -150,6 +151,15 @@ describe("EIP712ERC20", function () {
     });
 
     it("should fail: Wrong signer", async function () {
+      const [owner, receiver, stranger] = await ethers.getSigners();
+      const network = await ethers.provider.getNetwork();
+
+      const erc20Instance = await deployErc20();
+      const dropboxInstance = await deployDropbox("EIP712ERC20");
+
+      await dropboxInstance.grantRole(MINTER_ROLE, owner.address);
+      await erc20Instance.grantRole(MINTER_ROLE, dropboxInstance.address);
+
       const signature = await stranger._signTypedData(
         // Domain
         {

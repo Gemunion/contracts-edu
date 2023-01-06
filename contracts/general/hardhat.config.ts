@@ -29,43 +29,6 @@ export default {
         "0xae6ae8e5ccbfb04590405997ee2d52d2b330726137b875053c36d94e974d162f", // 0xf17f52151EbEF6C7334FAD080c5704D77216b732
       ],
     },
-    polygon: {
-      url: process.env.POLYGON_RPC_URL,
-    },
-    mumbai: {
-      url: process.env.MUMBAI_RPC_URL,
-      accounts: [process.env.MM_PRIVATEKEY],
-      gasPrice: 8000000000, // default is 'auto' which breaks chains without the london hardfork
-      timeout: 142000,
-      // gas: 29999915,
-    },
-    ropsten: {
-      url: process.env.ROPSTEN_RPC_URL,
-      accounts: [process.env.MM_PRIVATEKEY],
-    },
-    rinkeby: {
-      url: process.env.RINKEBY_RPC_URL,
-      gas: 2100000,
-      gasPrice: 8000000000,
-      timeout: 142000,
-      accounts: [process.env.MM_PRIVATEKEY],
-      // accounts: {
-      //   mnemonic: process.env.MM_MNEMONIC,
-      // },
-      saveDeployments: true,
-    },
-    binancetest: {
-      url: process.env.BINANCE_TEST_RPC_URL,
-      chainId: 97,
-      gasPrice: 20000000000,
-      accounts: [process.env.MM_PRIVATEKEY],
-    },
-    binancemain: {
-      url: process.env.BINANCE_RPC_URL,
-      chainId: 56,
-      gasPrice: 20000000000,
-      accounts: [process.env.MM_PRIVATEKEY],
-    },
   },
   solidity: {
     version: "0.8.9",
