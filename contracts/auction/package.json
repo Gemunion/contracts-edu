@@ -5,13 +5,13 @@
     "url": "https://gemunion.io/"
   },
   "dependencies": {
-    "@gemunion/contracts-constants": "1.1.8",
-    "@gemunion/contracts-erc721": "1.1.16"
+    "@gemunion/contracts-constants": "1.1.10",
+    "@gemunion/contracts-erc721": "1.1.18"
   },
   "description": "Collection of contracts and presets",
   "devDependencies": {
     "@ethersproject/networks": "5.7.1",
-    "@gemunion/contracts-mocha": "1.1.10",
+    "@gemunion/contracts-mocha": "1.1.11",
     "@nomiclabs/hardhat-ethers": "2.2.1",
     "@nomiclabs/hardhat-etherscan": "3.1.4",
     "@nomiclabs/hardhat-waffle": "2.0.3",
