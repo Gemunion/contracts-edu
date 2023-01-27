@@ -5,7 +5,7 @@
     "url": "https://gemunion.io/"
   },
   "dependencies": {
-    "@gemunion/contracts-mocha": "1.1.13"
+    "@gemunion/contracts-mocha": "1.1.16"
   },
   "description": "Collection of contracts and presets",
   "devDependencies": {
