@@ -71,7 +71,7 @@ export default {
         version: "0.4.18",
       },
       {
-        version: "0.8.9",
+        version: "0.8.13",
         settings: {
           optimizer: {
             enabled: true,

@@ -4,7 +4,7 @@
 // Email: trejgun+gemunion@gmail.com
 // Website: https://gemunion.io/
 
-pragma solidity ^0.8.9;
+pragma solidity ^0.8.13;
 
 interface IERC1155Mintable {
   function mintBatch(address to, uint256[] memory ids, uint256[] memory amounts, bytes memory data) external;
