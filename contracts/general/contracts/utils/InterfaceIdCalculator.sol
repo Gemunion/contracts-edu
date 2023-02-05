@@ -26,6 +26,7 @@ import "@openzeppelin/contracts/access/IAccessControlEnumerable.sol";
 import "@openzeppelin/contracts/utils/introspection/IERC165.sol";
 
 import "@openzeppelin/contracts/interfaces/IERC2981.sol";
+import "@openzeppelin/contracts/interfaces/IERC2309.sol";
 
 contract InterfaceIdCalculator {
   constructor() {
@@ -47,8 +48,9 @@ contract InterfaceIdCalculator {
     console.logBytes4(type(IERC1155MetadataURI).interfaceId);
     console.logBytes4(type(IERC1155Receiver).interfaceId);
 
-    console.log("IERC2981");
+    console.log("IERCXXX");
     console.logBytes4(type(IERC2981).interfaceId);
+    console.logBytes4(type(IERC2309).interfaceId); // has no methods so returns 0x00000000
 
     console.log("IAccessControl");
     console.logBytes4(type(IAccessControl).interfaceId);
