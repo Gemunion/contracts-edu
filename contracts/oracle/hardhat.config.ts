@@ -18,7 +18,7 @@ export default {
       blockGasLimit: 40966424,
     },
     besu: {
-      url: process.env.BESU_RPC_URL,
+      url: process.env.JSON_RPC_ADDR_BESU,
       // https://besu.hyperledger.org/en/stable/Reference/Accounts-for-Testing/
       accounts: [
         "0x8f2a55949038a9610f50fb23b5883af3b4ecb3c3bb792cbcefbd1542c692be63", // 0xfe3b557e8fb62b89f4916b721be55ceb828dbd73
@@ -27,38 +27,23 @@ export default {
       ],
     },
     polygon: {
-      url: process.env.POLYGON_RPC_URL,
+      url: process.env.JSON_RPC_ADDR_POLYGON,
     },
     mumbai: {
-      url: process.env.MUMBAI_RPC_URL,
+      url: process.env.JSON_RPC_ADDR_MUMBAI,
       accounts: [process.env.MM_PRIVATEKEY],
       gasPrice: 8000000000, // default is 'auto' which breaks chains without the london hardfork
       timeout: 142000,
       // gas: 29999915,
     },
-    ropsten: {
-      url: process.env.ROPSTEN_RPC_URL,
-      accounts: [process.env.MM_PRIVATEKEY],
-    },
-    rinkeby: {
-      url: process.env.RINKEBY_RPC_URL,
-      gas: 2100000,
-      gasPrice: 8000000000,
-      timeout: 142000,
-      accounts: [process.env.MM_PRIVATEKEY],
-      // accounts: {
-      //   mnemonic: process.env.MM_MNEMONIC,
-      // },
-      saveDeployments: true,
-    },
     binancetest: {
-      url: process.env.BINANCE_TEST_RPC_URL,
+      url: process.env.JSON_RPC_ADDR_BINANCE_TEST,
       chainId: 97,
       gasPrice: 20000000000,
       accounts: [process.env.MM_PRIVATEKEY],
     },
     binancemain: {
-      url: process.env.BINANCE_RPC_URL,
+      url: process.env.JSON_RPC_ADDR_BINANCE,
       chainId: 56,
       gasPrice: 20000000000,
       accounts: [process.env.MM_PRIVATEKEY],

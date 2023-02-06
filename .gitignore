@@ -22,6 +22,3 @@ package-lock.json
 yarn.lock
 /lerna-debug.log
 /report.*.json
-
-# env
-.env
