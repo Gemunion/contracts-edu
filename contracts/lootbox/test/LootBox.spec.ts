@@ -8,6 +8,7 @@ import { decimals, MINTER_ROLE, tokenName, tokenSymbol } from "@gemunion/contrac
 
 import { LinkToken, VRFCoordinatorMock } from "../typechain-types";
 import { deployERC721, deployLinkVrfFixture } from "../src";
+import { randomRequest } from "./shared/randomRequest";
 
 const linkAmountInWei = ethers.BigNumber.from("1000").mul(decimals);
 
@@ -173,17 +174,19 @@ describe("LootBox", function () {
         .to.emit(linkInstance, "Transfer(address,address,uint256)")
         .withArgs(nftInstance.address, vrfInstance.address, utils.parseEther("0.1"));
 
-      await expect(tx).to.emit(nftInstance, "RandomRequest");
-      const eventFilter = nftInstance.filters.RandomRequest();
-      const events = await nftInstance.queryFilter(eventFilter);
-      const requestId = events[0].args[0];
+      // await expect(tx).to.emit(nftInstance, "RandomRequest");
+      // const eventFilter = nftInstance.filters.RandomRequest();
+      // const events = await nftInstance.queryFilter(eventFilter);
+      // const requestId = events[0].args[0];
 
-      await expect(tx).to.emit(vrfInstance, "RandomnessRequest");
-      await expect(tx).to.emit(vrfInstance, "RandomnessRequestId").withArgs(requestId, nftInstance.address);
+      await randomRequest(nftInstance, vrfInstance);
 
-      const trx = await vrfInstance.callBackWithRandomness(requestId, 123, nftInstance.address);
-      await trx.wait();
-      await expect(trx).to.emit(nftInstance, "MintRandom").withArgs(owner.address, requestId);
+      // await expect(tx).to.emit(vrfInstance, "RandomnessRequest");
+      // await expect(tx).to.emit(vrfInstance, "RandomnessRequestId").withArgs(requestId, nftInstance.address);
+      //
+      // const trx = await vrfInstance.callBackWithRandomness(requestId, 123, nftInstance.address);
+      // await trx.wait();
+      // await expect(trx).to.emit(nftInstance, "MintRandom").withArgs(owner.address, requestId);
 
       const balanceOfOwner3 = await lootInstance.balanceOf(owner.address);
       expect(balanceOfOwner3).to.equal(0);

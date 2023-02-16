@@ -27,6 +27,13 @@ import "@openzeppelin/contracts/utils/introspection/IERC165.sol";
 
 import "@openzeppelin/contracts/interfaces/IERC2981.sol";
 import "@openzeppelin/contracts/interfaces/IERC2309.sol";
+import "@openzeppelin/contracts/interfaces/IERC2309.sol";
+
+import "@gemunion/contracts-erc20/contracts/interfaces/IERC1363.sol";
+import "@gemunion/contracts-erc20/contracts/interfaces/IERC1363Receiver.sol";
+
+import "@gemunion/contracts-erc721/contracts/interfaces/IERC4906.sol";
+import "@gemunion/contracts-erc721/contracts/interfaces/IERC4907.sol";
 
 contract InterfaceIdCalculator {
   constructor() {
@@ -51,6 +58,10 @@ contract InterfaceIdCalculator {
     console.log("IERCXXX");
     console.logBytes4(type(IERC2981).interfaceId);
     console.logBytes4(type(IERC2309).interfaceId); // has no methods so returns 0x00000000
+    console.logBytes4(type(IERC1363).interfaceId);
+    console.logBytes4(type(IERC1363Receiver).interfaceId);
+    console.logBytes4(type(IERC4906).interfaceId);
+    console.logBytes4(type(IERC4907).interfaceId);
 
     console.log("IAccessControl");
     console.logBytes4(type(IAccessControl).interfaceId);
