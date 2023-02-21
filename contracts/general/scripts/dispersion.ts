@@ -1,6 +1,6 @@
 import "@nomiclabs/hardhat-ethers";
 import { ethers } from "hardhat";
-import { BigNumber } from "ethers";
+import { BigNumber, utils } from "ethers";
 
 import { mapSeries } from "@gemunion/utils";
 
@@ -11,7 +11,7 @@ async function main() {
 
   const result = await mapSeries<BigNumber>(
     new Array(1e4).fill(null).map(() => {
-      return (): any => dispersionInstance.getDispersion(Math.floor(Math.random() * 1e6));
+      return (): any => dispersionInstance.getDispersion(BigNumber.from(utils.randomBytes(32)));
     }),
   );
 
