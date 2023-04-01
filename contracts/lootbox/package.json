@@ -5,12 +5,12 @@
     "url": "https://gemunion.io/"
   },
   "dependencies": {
-    "@gemunion/contracts-chain-link": "1.1.56",
-    "@gemunion/contracts-constants": "1.1.52",
-    "@gemunion/contracts-erc721": "1.1.60",
-    "@gemunion/contracts-erc721-enumerable": "1.1.60",
-    "@gemunion/contracts-mocha": "1.1.53",
-    "@gemunion/contracts-mocks": "1.1.55"
+    "@gemunion/contracts-chain-link": "1.1.58",
+    "@gemunion/contracts-constants": "1.1.54",
+    "@gemunion/contracts-erc721": "1.1.62",
+    "@gemunion/contracts-erc721-enumerable": "1.1.62",
+    "@gemunion/contracts-mocha": "1.1.55",
+    "@gemunion/contracts-mocks": "1.1.57"
   },
   "description": "Collection of contracts and presets",
   "devDependencies": {
