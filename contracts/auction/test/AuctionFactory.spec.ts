@@ -1,5 +1,4 @@
-import { expect, use } from "chai";
-import { solidity } from "ethereum-waffle";
+import { expect } from "chai";
 import { ethers } from "hardhat";
 import { time } from "@openzeppelin/test-helpers";
 
@@ -8,8 +7,6 @@ import { amount, DEFAULT_ADMIN_ROLE, PAUSER_ROLE, span, tokenId } from "@gemunio
 import { shouldBehaveLikeAccessControl, shouldBehaveLikePausable } from "@gemunion/contracts-mocha";
 
 import { deployAuctionFactory, deployERC721 } from "./shared/fixtures";
-
-use(solidity);
 
 describe("AuctionFactory", function () {
   const factory = () => deployAuctionFactory();

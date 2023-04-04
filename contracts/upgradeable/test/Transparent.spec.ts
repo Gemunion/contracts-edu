@@ -1,10 +1,7 @@
-import { expect, use } from "chai";
-import { solidity } from "ethereum-waffle";
+import { expect } from "chai";
 import { ethers, upgrades } from "hardhat";
 
 import { Transparent1, Transparent2 } from "../typechain-types";
-
-use(solidity);
 
 describe("Upgradeable", function () {
   it("should redeploy (transparent)", async function () {

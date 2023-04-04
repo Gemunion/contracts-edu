@@ -6,7 +6,7 @@
 
 pragma solidity ^0.8.13;
 
-import "@gemunion/contracts-mocks/contracts/ERC721Receiver.sol";
-import "@gemunion/contracts-mocks/contracts/ERC721NonReceiver.sol";
+import "@gemunion/contracts-mocks/contracts/Wallet.sol";
+import "@gemunion/contracts-mocks/contracts/Jerk.sol";
 
-import "@gemunion/contracts-chain-link/contracts/mocks/VrfCoordinator.sol";
+import "@gemunion/contracts-chain-link/contracts/mocks/VRFCoordinator.sol";

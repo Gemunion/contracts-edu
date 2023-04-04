@@ -1,5 +1,4 @@
-import { expect, use } from "chai";
-import { solidity } from "ethereum-waffle";
+import { expect } from "chai";
 import { ethers, network } from "hardhat";
 import { utils } from "ethers";
 import { loadFixture } from "@nomicfoundation/hardhat-network-helpers";
@@ -11,8 +10,6 @@ import { deployERC721, deployLinkVrfFixture } from "../src";
 import { randomRequest } from "./shared/randomRequest";
 
 const linkAmountInWei = ethers.BigNumber.from("1000").mul(decimals);
-
-use(solidity);
 
 describe("LootBox", function () {
   let vrfInstance: VRFCoordinatorMock;

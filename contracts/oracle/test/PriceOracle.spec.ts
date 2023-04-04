@@ -1,12 +1,9 @@
-import { expect, use } from "chai";
+import { expect } from "chai";
 import { ethers } from "hardhat";
-import { solidity } from "ethereum-waffle";
 
 import { shouldBehaveLikeOwnable } from "@gemunion/contracts-mocha";
 
 import { deployPriceOracle } from "./shared/fixtures";
-
-use(solidity);
 
 describe("PriceOracle", function () {
   const factory = () => deployPriceOracle(this.title);

@@ -29,8 +29,8 @@ import "@openzeppelin/contracts/interfaces/IERC2981.sol";
 import "@openzeppelin/contracts/interfaces/IERC2309.sol";
 import "@openzeppelin/contracts/interfaces/IERC2309.sol";
 
-import "@gemunion/contracts-erc20/contracts/interfaces/IERC1363.sol";
-import "@gemunion/contracts-erc20/contracts/interfaces/IERC1363Receiver.sol";
+import "@gemunion/contracts-erc1363/contracts/interfaces/IERC1363.sol";
+import "@gemunion/contracts-erc1363/contracts/interfaces/IERC1363Receiver.sol";
 
 import "@gemunion/contracts-erc721/contracts/interfaces/IERC4906.sol";
 import "@gemunion/contracts-erc721/contracts/interfaces/IERC4907.sol";
