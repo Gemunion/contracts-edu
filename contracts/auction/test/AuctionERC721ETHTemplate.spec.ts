@@ -1,5 +1,4 @@
-import { expect, use } from "chai";
-import { solidity } from "ethereum-waffle";
+import { expect } from "chai";
 import { ethers, web3 } from "hardhat";
 import { time } from "@openzeppelin/test-helpers";
 
@@ -7,8 +6,6 @@ import { amount, span, tokenId } from "@gemunion/contracts-constants";
 import { shouldBehaveLikeOwnable } from "@gemunion/contracts-mocha";
 
 import { deployAuction, deployERC721 } from "./shared/fixtures";
-
-use(solidity);
 
 describe("AuctionERC721ETHTemplate", function () {
   const factory = async (step?: number, offset?: number) => {

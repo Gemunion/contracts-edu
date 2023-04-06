@@ -1,10 +1,7 @@
-import { expect, use } from "chai";
-import { solidity } from "ethereum-waffle";
+import { expect } from "chai";
 import { ethers, upgrades } from "hardhat";
 
 import { Beacon1, Beacon2 } from "../typechain-types";
-
-use(solidity);
 
 describe("Upgradeable", function () {
   it("should redeploy (beacon)", async function () {

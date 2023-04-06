@@ -1,12 +1,9 @@
-import { expect, use } from "chai";
-import { solidity } from "ethereum-waffle";
+import { expect } from "chai";
 import { ethers } from "hardhat";
 
 import { amount, MINTER_ROLE, nonce, tokenId, tokenName } from "@gemunion/contracts-constants";
 
 import { deployDropbox, deployErc1155 } from "./shared/fixtures";
-
-use(solidity);
 
 describe("EIP712ERC1155", function () {
   describe("redeem", function () {
