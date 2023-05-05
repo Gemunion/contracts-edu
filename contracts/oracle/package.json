@@ -24,13 +24,13 @@
   "devDependencies": {
     "@ethersproject/networks": "5.7.1",
     "@openzeppelin/contracts": "4.8.3",
-    "@types/chai": "4.3.4",
+    "@types/chai": "4.3.5",
     "@types/mocha": "10.0.1",
-    "@types/node": "18.16.2",
+    "@types/node": "18.16.4",
     "dotenv": "16.0.3",
     "ethers": "5.7.2",
     "hardhat": "2.14.0",
-    "hardhat-deploy": "0.11.26",
+    "hardhat-deploy": "0.11.28",
     "solhint": "3.4.1",
     "solhint-plugin-prettier": "0.0.5",
     "ts-node": "10.9.1"
