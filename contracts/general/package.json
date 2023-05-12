@@ -19,8 +19,8 @@
     "@nomicfoundation/hardhat-toolbox": "2.0.2",
     "@nomiclabs/hardhat-ethers": "2.2.3",
     "@nomiclabs/hardhat-etherscan": "3.1.7",
-    "@typechain/ethers-v5": "10.2.0",
-    "@typechain/hardhat": "6.1.5",
+    "@typechain/ethers-v5": "10.2.1",
+    "@typechain/hardhat": "6.1.6",
     "chai": "4.3.7",
     "hardhat-gas-reporter": "1.0.9",
     "solidity-coverage": "0.8.2",
@@ -33,7 +33,7 @@
     "@openzeppelin/contracts": "4.8.3",
     "@types/chai": "4.3.5",
     "@types/mocha": "10.0.1",
-    "@types/node": "18.16.4",
+    "@types/node": "18.16.8",
     "dotenv": "16.0.3",
     "ethers": "5.7.2",
     "hardhat": "2.14.0",
@@ -41,7 +41,7 @@
     "solhint": "3.4.1",
     "solhint-plugin-prettier": "0.0.5",
     "ts-node": "10.9.1",
-    "web3": "1.9.0"
+    "web3": "1.10.0"
   },
   "engines": {
     "node": ">=12.13"
