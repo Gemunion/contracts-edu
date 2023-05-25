@@ -7,12 +7,12 @@
   "dependencies": {
     "@ethersproject/abi": "5.7.0",
     "@ethersproject/providers": "5.7.2",
-    "@gemunion/contracts-constants": "2.0.18",
-    "@gemunion/contracts-erc1155": "2.0.18",
-    "@gemunion/contracts-erc20": "2.0.18",
-    "@gemunion/contracts-erc1363": "2.0.18",
-    "@gemunion/contracts-erc721": "2.0.18",
-    "@gemunion/contracts-mocha": "2.0.18",
+    "@gemunion/contracts-constants": "3.0.1",
+    "@gemunion/contracts-erc1155": "3.0.1",
+    "@gemunion/contracts-erc20": "3.0.1",
+    "@gemunion/contracts-erc1363": "3.0.1",
+    "@gemunion/contracts-erc721": "3.0.1",
+    "@gemunion/contracts-mocha": "3.0.1",
     "@gemunion/utils": "1.3.1",
     "@nomicfoundation/hardhat-chai-matchers": "1.0.6",
     "@nomicfoundation/hardhat-network-helpers": "1.0.8",
@@ -30,7 +30,7 @@
   "devDependencies": {
     "@ethersproject/networks": "5.7.1",
     "@nomiclabs/hardhat-web3": "2.0.0",
-    "@openzeppelin/contracts": "4.8.3",
+    "@openzeppelin/contracts": "4.9.0",
     "@types/chai": "4.3.5",
     "@types/mocha": "10.0.1",
     "@types/node": "18.16.13",
@@ -50,7 +50,7 @@
   "main": "./dist/index.js",
   "name": "@gemunion/contracts-examples-general",
   "peerDependencies": {
-    "@openzeppelin/contracts": "4.8.3",
+    "@openzeppelin/contracts": "4.9.0",
     "ethers": "5.7.2"
   },
   "private": true,
@@ -73,5 +73,5 @@
     "coverage": "hardhat coverage"
   },
   "types": "./typechain-types/index.ts",
-  "version": "1.1.18"
+  "version": "2.0.0"
 }

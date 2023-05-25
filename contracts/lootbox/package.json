@@ -7,12 +7,12 @@
   "dependencies": {
     "@ethersproject/abi": "5.7.0",
     "@ethersproject/providers": "5.7.2",
-    "@gemunion/contracts-chain-link": "2.0.18",
-    "@gemunion/contracts-constants": "2.0.18",
-    "@gemunion/contracts-erc721": "2.0.18",
-    "@gemunion/contracts-erc721-enumerable": "2.0.18",
-    "@gemunion/contracts-mocha": "2.0.18",
-    "@gemunion/contracts-mocks": "2.0.18",
+    "@gemunion/contracts-chain-link": "3.0.1",
+    "@gemunion/contracts-constants": "3.0.1",
+    "@gemunion/contracts-erc721": "3.0.1",
+    "@gemunion/contracts-erc721-enumerable": "3.0.1",
+    "@gemunion/contracts-mocha": "3.0.1",
+    "@gemunion/contracts-mocks": "3.0.1",
     "@nomicfoundation/hardhat-chai-matchers": "1.0.6",
     "@nomicfoundation/hardhat-network-helpers": "1.0.8",
     "@nomicfoundation/hardhat-toolbox": "2.0.2",
@@ -30,7 +30,7 @@
     "@chainlink/contracts": "0.6.1",
     "@ethersproject/networks": "5.7.1",
     "@nomiclabs/hardhat-web3": "2.0.0",
-    "@openzeppelin/contracts": "4.8.3",
+    "@openzeppelin/contracts": "4.9.0",
     "@openzeppelin/test-helpers": "0.5.16",
     "@types/chai": "4.3.5",
     "@types/mocha": "10.0.1",
@@ -51,7 +51,7 @@
   "main": "./dist/index.js",
   "name": "@gemunion/contracts-examples-lootbox",
   "peerDependencies": {
-    "@openzeppelin/contracts": "4.8.3",
+    "@openzeppelin/contracts": "4.9.0",
     "ethers": "5.7.2"
   },
   "private": true,
@@ -74,5 +74,5 @@
     "test:coverage": "hardhat coverage"
   },
   "types": "./dist/index.d.ts",
-  "version": "1.1.12"
+  "version": "2.0.0"
 }
