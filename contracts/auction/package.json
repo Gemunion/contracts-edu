@@ -19,7 +19,7 @@
     "chai": "4.3.7",
     "hardhat-gas-reporter": "1.0.9",
     "solidity-coverage": "0.8.2",
-    "typechain": "8.1.1"
+    "typechain": "8.2.0"
   },
   "description": "Collection of contracts and presets",
   "devDependencies": {
@@ -29,7 +29,7 @@
     "@openzeppelin/test-helpers": "0.5.16",
     "@types/chai": "4.3.5",
     "@types/mocha": "10.0.1",
-    "@types/node": "18.16.13",
+    "@types/node": "18.16.15",
     "dotenv": "16.0.3",
     "ethers": "5.7.2",
     "hardhat": "2.14.0",
