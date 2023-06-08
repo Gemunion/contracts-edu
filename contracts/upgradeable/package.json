@@ -29,7 +29,7 @@
     "@types/mocha": "10.0.1",
     "@types/node": "18.16.16",
     "dotenv": "16.1.4",
-    "ethers": "5.7.2",
+    "ethers": "6.5.1",
     "hardhat": "2.15.0",
     "hardhat-deploy": "0.11.30",
     "rimraf": "5.0.1",
