@@ -1,5 +1,6 @@
 import { expect } from "chai";
 import { ethers } from "hardhat";
+import { ZeroAddress } from "ethers";
 
 import { amount, MINTER_ROLE, nonce, tokenName } from "@gemunion/contracts-constants";
 
@@ -15,15 +16,15 @@ describe("EIP712ERC20", function () {
       const dropboxInstance = await deployDropbox("EIP712ERC20");
 
       await dropboxInstance.grantRole(MINTER_ROLE, owner.address);
-      await erc20Instance.grantRole(MINTER_ROLE, dropboxInstance.address);
+      await erc20Instance.grantRole(MINTER_ROLE, await dropboxInstance.getAddress());
 
-      const signature = await owner._signTypedData(
+      const signature = await owner.signTypedData(
         // Domain
         {
           name: tokenName,
           version: "1.0.0",
           chainId: network.chainId,
-          verifyingContract: dropboxInstance.address,
+          verifyingContract: await dropboxInstance.getAddress(),
         },
         // Types
         {
@@ -38,17 +39,15 @@ describe("EIP712ERC20", function () {
         {
           nonce,
           account: receiver.address,
-          token: erc20Instance.address,
+          token: await erc20Instance.getAddress(),
           amount,
         },
       );
 
       const tx1 = dropboxInstance
         .connect(stranger)
-        .redeem(nonce, receiver.address, erc20Instance.address, amount, owner.address, signature);
-      await expect(tx1)
-        .to.emit(erc20Instance, "Transfer")
-        .withArgs(ethers.constants.AddressZero, receiver.address, amount);
+        .redeem(nonce, receiver.address, await erc20Instance.getAddress(), amount, owner.address, signature);
+      await expect(tx1).to.emit(erc20Instance, "Transfer").withArgs(ZeroAddress, receiver.address, amount);
     });
 
     it("should fail: duplicate mint", async function () {
@@ -59,15 +58,15 @@ describe("EIP712ERC20", function () {
       const dropboxInstance = await deployDropbox("EIP712ERC20");
 
       await dropboxInstance.grantRole(MINTER_ROLE, owner.address);
-      await erc20Instance.grantRole(MINTER_ROLE, dropboxInstance.address);
+      await erc20Instance.grantRole(MINTER_ROLE, await dropboxInstance.getAddress());
 
-      const signature = await owner._signTypedData(
+      const signature = await owner.signTypedData(
         // Domain
         {
           name: tokenName,
           version: "1.0.0",
           chainId: network.chainId,
-          verifyingContract: dropboxInstance.address,
+          verifyingContract: await dropboxInstance.getAddress(),
         },
         // Types
         {
@@ -82,21 +81,19 @@ describe("EIP712ERC20", function () {
         {
           nonce,
           account: receiver.address,
-          token: erc20Instance.address,
+          token: await erc20Instance.getAddress(),
           amount,
         },
       );
 
       const tx1 = dropboxInstance
         .connect(stranger)
-        .redeem(nonce, receiver.address, erc20Instance.address, amount, owner.address, signature);
-      await expect(tx1)
-        .to.emit(erc20Instance, "Transfer")
-        .withArgs(ethers.constants.AddressZero, receiver.address, amount);
+        .redeem(nonce, receiver.address, await erc20Instance.getAddress(), amount, owner.address, signature);
+      await expect(tx1).to.emit(erc20Instance, "Transfer").withArgs(ZeroAddress, receiver.address, amount);
 
       const tx2 = dropboxInstance
         .connect(stranger)
-        .redeem(nonce, receiver.address, erc20Instance.address, amount, owner.address, signature);
+        .redeem(nonce, receiver.address, await erc20Instance.getAddress(), amount, owner.address, signature);
       await expect(tx2).to.be.revertedWith("EIP712ERC20: Expired signature");
     });
 
@@ -108,15 +105,15 @@ describe("EIP712ERC20", function () {
       const dropboxInstance = await deployDropbox("EIP712ERC20");
 
       await dropboxInstance.grantRole(MINTER_ROLE, owner.address);
-      await erc20Instance.grantRole(MINTER_ROLE, dropboxInstance.address);
+      await erc20Instance.grantRole(MINTER_ROLE, await dropboxInstance.getAddress());
 
-      const signature = await owner._signTypedData(
+      const signature = await owner.signTypedData(
         // Domain
         {
           name: tokenName,
           version: "1.0.0",
           chainId: network.chainId,
-          verifyingContract: dropboxInstance.address,
+          verifyingContract: await dropboxInstance.getAddress(),
         },
         // Types
         {
@@ -131,7 +128,7 @@ describe("EIP712ERC20", function () {
         {
           nonce,
           account: receiver.address,
-          token: erc20Instance.address,
+          token: await erc20Instance.getAddress(),
           amount,
         },
       );
@@ -139,7 +136,7 @@ describe("EIP712ERC20", function () {
       const tx1 = dropboxInstance.redeem(
         nonce,
         stranger.address,
-        erc20Instance.address,
+        await erc20Instance.getAddress(),
         amount,
         owner.address,
         signature,
@@ -155,15 +152,15 @@ describe("EIP712ERC20", function () {
       const dropboxInstance = await deployDropbox("EIP712ERC20");
 
       await dropboxInstance.grantRole(MINTER_ROLE, owner.address);
-      await erc20Instance.grantRole(MINTER_ROLE, dropboxInstance.address);
+      await erc20Instance.grantRole(MINTER_ROLE, await dropboxInstance.getAddress());
 
-      const signature = await stranger._signTypedData(
+      const signature = await stranger.signTypedData(
         // Domain
         {
           name: tokenName,
           version: "1.0.0",
           chainId: network.chainId,
-          verifyingContract: dropboxInstance.address,
+          verifyingContract: await dropboxInstance.getAddress(),
         },
         // Types
         {
@@ -178,14 +175,14 @@ describe("EIP712ERC20", function () {
         {
           nonce,
           account: receiver.address,
-          token: erc20Instance.address,
+          token: await erc20Instance.getAddress(),
           amount,
         },
       );
 
       const tx1 = dropboxInstance
         .connect(stranger)
-        .redeem(nonce, receiver.address, erc20Instance.address, amount, stranger.address, signature);
+        .redeem(nonce, receiver.address, await erc20Instance.getAddress(), amount, stranger.address, signature);
       await expect(tx1).to.be.revertedWith("EIP712ERC20: Wrong signer");
     });
   });

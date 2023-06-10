@@ -2,11 +2,10 @@ import { expect } from "chai";
 import { ethers } from "hardhat";
 
 import { shouldBehaveLikeOwnable } from "@gemunion/contracts-mocha";
-
-import { deployPriceOracle } from "./shared/fixtures";
+import { deployContract } from "@gemunion/contracts-mocks";
 
 describe("PriceOracle", function () {
-  const factory = () => deployPriceOracle(this.title);
+  const factory = (): Promise<any> => deployContract(this.title);
 
   shouldBehaveLikeOwnable(factory);
 

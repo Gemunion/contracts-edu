@@ -9,7 +9,7 @@ async function main() {
   const erc20FlashBorrower = await ethers.getContractFactory("ERC3156FlashBorrowerMock");
   const erc20FlashBorrowerInstance = await erc20FlashBorrower.deploy(true, true);
 
-  await erc20Instance.flashLoan(erc20FlashBorrowerInstance.address, erc20Instance.address, amount, "0x");
+  await erc20Instance.flashLoan(erc20FlashBorrowerInstance.address, await erc20Instance.getAddress(), amount, "0x");
 }
 
 main()

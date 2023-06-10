@@ -1,5 +1,6 @@
 import { expect } from "chai";
 import { ethers } from "hardhat";
+import { ZeroAddress } from "ethers";
 
 import { amount, MINTER_ROLE, nonce, tokenId, tokenName } from "@gemunion/contracts-constants";
 
@@ -15,14 +16,14 @@ describe("EIP712ERC1155", function () {
       const dropboxInstance = await deployDropbox("EIP712ERC1155");
 
       await dropboxInstance.grantRole(MINTER_ROLE, owner.address);
-      await erc1155Instance.grantRole(MINTER_ROLE, dropboxInstance.address);
-      const signature = await owner._signTypedData(
+      await erc1155Instance.grantRole(MINTER_ROLE, await dropboxInstance.getAddress());
+      const signature = await owner.signTypedData(
         // Domain
         {
           name: tokenName,
           version: "1.0.0",
           chainId: network.chainId,
-          verifyingContract: dropboxInstance.address,
+          verifyingContract: await dropboxInstance.getAddress(),
         },
         // Types
         {
@@ -38,7 +39,7 @@ describe("EIP712ERC1155", function () {
         {
           nonce,
           account: receiver.address,
-          token: erc1155Instance.address,
+          token: await erc1155Instance.getAddress(),
           tokenIds: [tokenId],
           amounts: [amount],
         },
@@ -46,10 +47,18 @@ describe("EIP712ERC1155", function () {
 
       const tx1 = dropboxInstance
         .connect(stranger)
-        .redeem(nonce, receiver.address, erc1155Instance.address, [tokenId], [amount], owner.address, signature);
+        .redeem(
+          nonce,
+          receiver.address,
+          await erc1155Instance.getAddress(),
+          [tokenId],
+          [amount],
+          owner.address,
+          signature,
+        );
       await expect(tx1)
         .to.emit(erc1155Instance, "TransferBatch")
-        .withArgs(dropboxInstance.address, ethers.constants.AddressZero, receiver.address, [tokenId], [amount]);
+        .withArgs(await dropboxInstance.getAddress(), ZeroAddress, receiver.address, [tokenId], [amount]);
     });
 
     it("should fail: duplicate mint", async function () {
@@ -60,15 +69,15 @@ describe("EIP712ERC1155", function () {
       const dropboxInstance = await deployDropbox("EIP712ERC1155");
 
       await dropboxInstance.grantRole(MINTER_ROLE, owner.address);
-      await erc1155Instance.grantRole(MINTER_ROLE, dropboxInstance.address);
+      await erc1155Instance.grantRole(MINTER_ROLE, await dropboxInstance.getAddress());
 
-      const signature = await owner._signTypedData(
+      const signature = await owner.signTypedData(
         // Domain
         {
           name: tokenName,
           version: "1.0.0",
           chainId: network.chainId,
-          verifyingContract: dropboxInstance.address,
+          verifyingContract: await dropboxInstance.getAddress(),
         },
         // Types
         {
@@ -84,7 +93,7 @@ describe("EIP712ERC1155", function () {
         {
           nonce,
           account: receiver.address,
-          token: erc1155Instance.address,
+          token: await erc1155Instance.getAddress(),
           tokenIds: [tokenId],
           amounts: [amount],
         },
@@ -92,14 +101,30 @@ describe("EIP712ERC1155", function () {
 
       const tx1 = dropboxInstance
         .connect(stranger)
-        .redeem(nonce, receiver.address, erc1155Instance.address, [tokenId], [amount], owner.address, signature);
+        .redeem(
+          nonce,
+          receiver.address,
+          await erc1155Instance.getAddress(),
+          [tokenId],
+          [amount],
+          owner.address,
+          signature,
+        );
       await expect(tx1)
         .to.emit(erc1155Instance, "TransferBatch")
-        .withArgs(dropboxInstance.address, ethers.constants.AddressZero, receiver.address, [tokenId], [amount]);
+        .withArgs(await dropboxInstance.getAddress(), ZeroAddress, receiver.address, [tokenId], [amount]);
 
       const tx2 = dropboxInstance
         .connect(stranger)
-        .redeem(nonce, receiver.address, erc1155Instance.address, [tokenId], [amount], owner.address, signature);
+        .redeem(
+          nonce,
+          receiver.address,
+          await erc1155Instance.getAddress(),
+          [tokenId],
+          [amount],
+          owner.address,
+          signature,
+        );
       await expect(tx2).to.be.revertedWith("EIP712ERC1155: Expired signature");
     });
 
@@ -111,15 +136,15 @@ describe("EIP712ERC1155", function () {
       const dropboxInstance = await deployDropbox("EIP712ERC1155");
 
       await dropboxInstance.grantRole(MINTER_ROLE, owner.address);
-      await erc1155Instance.grantRole(MINTER_ROLE, dropboxInstance.address);
+      await erc1155Instance.grantRole(MINTER_ROLE, await dropboxInstance.getAddress());
 
-      const signature = await owner._signTypedData(
+      const signature = await owner.signTypedData(
         // Domain
         {
           name: tokenName,
           version: "1.0.0",
           chainId: network.chainId,
-          verifyingContract: dropboxInstance.address,
+          verifyingContract: await dropboxInstance.getAddress(),
         },
         // Types
         {
@@ -135,7 +160,7 @@ describe("EIP712ERC1155", function () {
         {
           nonce,
           account: receiver.address,
-          token: erc1155Instance.address,
+          token: await erc1155Instance.getAddress(),
           tokenIds: [tokenId],
           amounts: [amount],
         },
@@ -144,7 +169,7 @@ describe("EIP712ERC1155", function () {
       const tx1 = dropboxInstance.redeem(
         nonce,
         stranger.address,
-        erc1155Instance.address,
+        await erc1155Instance.getAddress(),
         [tokenId],
         [amount],
         owner.address,
@@ -161,15 +186,15 @@ describe("EIP712ERC1155", function () {
       const dropboxInstance = await deployDropbox("EIP712ERC1155");
 
       await dropboxInstance.grantRole(MINTER_ROLE, owner.address);
-      await erc1155Instance.grantRole(MINTER_ROLE, dropboxInstance.address);
+      await erc1155Instance.grantRole(MINTER_ROLE, await dropboxInstance.getAddress());
 
-      const signature = await stranger._signTypedData(
+      const signature = await stranger.signTypedData(
         // Domain
         {
           name: tokenName,
           version: "1.0.0",
           chainId: network.chainId,
-          verifyingContract: dropboxInstance.address,
+          verifyingContract: await dropboxInstance.getAddress(),
         },
         // Types
         {
@@ -185,7 +210,7 @@ describe("EIP712ERC1155", function () {
         {
           nonce,
           account: receiver.address,
-          token: erc1155Instance.address,
+          token: await erc1155Instance.getAddress(),
           tokenIds: [tokenId],
           amounts: [amount],
         },
@@ -193,7 +218,15 @@ describe("EIP712ERC1155", function () {
 
       const tx1 = dropboxInstance
         .connect(stranger)
-        .redeem(nonce, receiver.address, erc1155Instance.address, [tokenId], [amount], stranger.address, signature);
+        .redeem(
+          nonce,
+          receiver.address,
+          await erc1155Instance.getAddress(),
+          [tokenId],
+          [amount],
+          stranger.address,
+          signature,
+        );
       await expect(tx1).to.be.revertedWith("EIP712ERC1155: Wrong signer");
     });
   });

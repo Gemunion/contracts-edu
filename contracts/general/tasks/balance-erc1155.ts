@@ -1,4 +1,5 @@
 import { task } from "hardhat/config";
+import { formatEther } from "ethers";
 
 task("balance-erc1155", "Prints an ERC1155 balance")
   .addParam("account", "The account's address")
@@ -6,9 +7,8 @@ task("balance-erc1155", "Prints an ERC1155 balance")
   .setAction(async (args, hre) => {
     const { account, contract } = args;
 
-    const coinFactory = await hre.ethers.getContractFactory("ERC1155Simple");
-    const coinInstance = coinFactory.attach(contract);
+    const coinInstance = await hre.ethers.getContractAt("ERC1155Simple", contract);
     const accBalance = await coinInstance.balanceOf(account, "16110");
 
-    console.info("ERC1155 Balance:", hre.ethers.utils.formatEther(accBalance.toString()));
+    console.info("ERC1155 Balance:", formatEther(accBalance.toString()));
   });

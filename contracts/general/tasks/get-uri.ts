@@ -6,8 +6,7 @@ task("get-uri", "Prints a token's uri")
   .setAction(async (args, hre) => {
     const { contract, id } = args;
 
-    const coinFactory = await hre.ethers.getContractFactory("ERC721Simple");
-    const coinInstance = coinFactory.attach(contract);
+    const coinInstance = await hre.ethers.getContractAt("ERC721Simple", contract);
     const uri = await coinInstance.tokenURI(id);
 
     console.info("Token URI:", uri);

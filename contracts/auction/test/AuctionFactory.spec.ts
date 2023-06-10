@@ -1,5 +1,6 @@
 import { expect } from "chai";
 import { ethers } from "hardhat";
+import { ZeroAddress } from "ethers";
 import { time } from "@openzeppelin/test-helpers";
 
 import { amount, DEFAULT_ADMIN_ROLE, PAUSER_ROLE, span, tokenId } from "@gemunion/contracts-constants";
@@ -26,20 +27,18 @@ describe("AuctionFactory", function () {
       const erc721Instance = await erc721Factory();
 
       await erc721Instance.mint(owner.address, tokenId);
-      await erc721Instance.approve(factoryInstance.address, tokenId);
+      await erc721Instance.approve(await factoryInstance.getAddress(), tokenId);
 
-      const tx = factoryInstance.createAuction(
-        erc721Instance.address,
+      const tx = await factoryInstance.createAuction(
+        await erc721Instance.getAddress(),
         tokenId,
         amount,
-        amount / 10,
-        amount * 3,
+        amount / 10n,
+        amount * 3n,
         timestamp,
         timestamp + span,
       );
 
-      // TODO strange: first call returns undef, second call returns array[string]
-      await factoryInstance.allAuctions();
       const [auction] = await factoryInstance.allAuctions();
 
       await expect(tx)
@@ -47,11 +46,11 @@ describe("AuctionFactory", function () {
         .withArgs(
           auction,
           owner.address,
-          erc721Instance.address,
+          await erc721Instance.getAddress(),
           tokenId,
           amount,
-          amount / 10,
-          amount * 3,
+          amount / 10n,
+          amount * 3n,
           timestamp,
           timestamp + span,
         );
@@ -65,11 +64,11 @@ describe("AuctionFactory", function () {
       const factoryInstance = await factory();
 
       const tx = factoryInstance.createAuction(
-        ethers.constants.AddressZero,
+        ZeroAddress,
         tokenId,
         amount,
-        amount / 10,
-        amount * 3,
+        amount / 10n,
+        amount * 3n,
         timestamp,
         timestamp + span,
       );
@@ -84,11 +83,11 @@ describe("AuctionFactory", function () {
       const erc721Instance = await erc721Factory();
 
       const tx = factoryInstance.createAuction(
-        erc721Instance.address,
+        await erc721Instance.getAddress(),
         tokenId,
         amount,
-        amount / 10,
-        amount * 3,
+        amount / 10n,
+        amount * 3n,
         timestamp + span,
         timestamp,
       );
@@ -103,11 +102,11 @@ describe("AuctionFactory", function () {
       const erc721Instance = await erc721Factory();
 
       const tx = factoryInstance.createAuction(
-        erc721Instance.address,
+        await erc721Instance.getAddress(),
         tokenId,
         0,
-        amount / 10,
-        amount * 3,
+        amount / 10n,
+        amount * 3n,
         timestamp,
         timestamp + span,
       );
@@ -122,11 +121,11 @@ describe("AuctionFactory", function () {
       const erc721Instance = await erc721Factory();
 
       const tx = factoryInstance.createAuction(
-        erc721Instance.address,
+        await erc721Instance.getAddress(),
         tokenId,
         amount,
-        amount / 10,
-        amount / 2,
+        amount / 10n,
+        amount / 2n,
         timestamp,
         timestamp + span,
       );
@@ -141,11 +140,11 @@ describe("AuctionFactory", function () {
       const erc721Instance = await erc721Factory();
 
       const tx = factoryInstance.createAuction(
-        erc721Instance.address,
+        await erc721Instance.getAddress(),
         tokenId,
         amount,
-        amount / 10,
-        amount * 3,
+        amount / 10n,
+        amount * 3n,
         timestamp - span - span,
         timestamp - span,
       );
@@ -161,11 +160,19 @@ describe("AuctionFactory", function () {
       const erc721Instance = await erc721Factory();
 
       await erc721Instance.mint(owner.address, tokenId);
-      await erc721Instance.approve(factoryInstance.address, tokenId);
+      await erc721Instance.approve(await factoryInstance.getAddress(), tokenId);
 
       const tx = factoryInstance
         .connect(stranger)
-        .createAuction(erc721Instance.address, tokenId, amount, amount / 10, amount * 3, timestamp, timestamp + span);
+        .createAuction(
+          await erc721Instance.getAddress(),
+          tokenId,
+          amount,
+          amount / 10n,
+          amount * 3n,
+          timestamp,
+          timestamp + span,
+        );
 
       await expect(tx).to.be.revertedWith("ERC721: transfer from incorrect owner");
     });
@@ -180,24 +187,24 @@ describe("AuctionFactory", function () {
       const erc721Instance = await erc721Factory();
 
       await erc721Instance.mint(owner.address, tokenId);
-      await erc721Instance.approve(factoryInstance.address, tokenId);
+      await erc721Instance.approve(await factoryInstance.getAddress(), tokenId);
 
-      const addr = await factoryInstance.callStatic.createAuction(
-        erc721Instance.address,
+      const [addr] = await factoryInstance.createAuction.staticCallResult(
+        await erc721Instance.getAddress(),
         tokenId,
         amount,
-        amount / 10,
-        amount * 3,
+        amount / 10n,
+        amount * 3n,
         timestamp,
         timestamp + span,
       );
 
       const tx = await factoryInstance.createAuction(
-        erc721Instance.address,
+        await erc721Instance.getAddress(),
         tokenId,
         amount,
-        amount / 10,
-        amount * 3,
+        amount / 10n,
+        amount * 3n,
         timestamp,
         timestamp + span,
       );
@@ -207,11 +214,11 @@ describe("AuctionFactory", function () {
         .withArgs(
           addr,
           owner.address,
-          erc721Instance.address,
+          await erc721Instance.getAddress(),
           tokenId,
           amount,
-          amount / 10,
-          amount * 3,
+          amount / 10n,
+          amount * 3n,
           timestamp,
           timestamp + span,
         );

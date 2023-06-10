@@ -8,7 +8,7 @@ import { shouldBehaveLikeOwnable } from "@gemunion/contracts-mocha";
 import { deployAuction, deployERC721 } from "./shared/fixtures";
 
 describe("AuctionERC721ETHTemplate", function () {
-  const factory = async (step?: number, offset?: number) => {
+  const factory = async (step?: bigint, offset?: number) => {
     const erc721Instance = await deployERC721();
     const templateInstance = await deployAuction(step, offset, erc721Instance);
 
@@ -17,6 +17,7 @@ describe("AuctionERC721ETHTemplate", function () {
 
   shouldBehaveLikeOwnable(async () => {
     const { templateInstance } = await factory();
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return templateInstance;
   });
 
@@ -38,23 +39,23 @@ describe("AuctionERC721ETHTemplate", function () {
 
       await expect(tx1).to.emit(templateInstance, "AuctionBid").withArgs(receiver.address, amount);
 
-      const tx2 = await templateInstance.connect(stranger).makeBid({ value: amount + amount / 10 });
+      const tx2 = await templateInstance.connect(stranger).makeBid({ value: amount + amount / 10n });
 
       await expect(tx2)
         .to.emit(templateInstance, "AuctionBid")
-        .withArgs(stranger.address, amount + amount / 10);
+        .withArgs(stranger.address, amount + amount / 10n);
     });
 
     it("should make a bid with no bid step", async function () {
       const [_owner, receiver] = await ethers.getSigners();
-      const { templateInstance } = await factory(0);
+      const { templateInstance } = await factory(10n);
 
-      const bid = Math.floor(Math.random() * 1e5);
+      const bidMultiplier = BigInt(Math.floor(Math.random() * 10));
 
-      const tx = templateInstance.connect(receiver).makeBid({ value: amount + bid });
+      const tx = templateInstance.connect(receiver).makeBid({ value: amount + (amount / 10n) * bidMultiplier });
       await expect(tx)
         .emit(templateInstance, "AuctionBid")
-        .withArgs(receiver.address, amount + bid);
+        .withArgs(receiver.address, amount + (amount / 10n) * bidMultiplier);
     });
 
     it("should fail: auction is not yet started", async function () {
@@ -105,7 +106,7 @@ describe("AuctionERC721ETHTemplate", function () {
       const [_owner, receiver] = await ethers.getSigners();
       const { templateInstance } = await factory();
 
-      const tx = templateInstance.connect(receiver).makeBid({ value: amount / 2 });
+      const tx = templateInstance.connect(receiver).makeBid({ value: amount / 2n });
       await expect(tx).to.be.revertedWith("Auction: proposed bid can not be less than start price");
     });
 
@@ -113,8 +114,8 @@ describe("AuctionERC721ETHTemplate", function () {
       const [_owner, receiver, stranger] = await ethers.getSigners();
       const { templateInstance } = await factory();
 
-      await templateInstance.connect(receiver).makeBid({ value: amount * 10 });
-      const tx = templateInstance.connect(stranger).makeBid({ value: amount * 2 });
+      await templateInstance.connect(receiver).makeBid({ value: amount * 10n });
+      const tx = templateInstance.connect(stranger).makeBid({ value: amount * 2n });
       await expect(tx).to.be.revertedWith("Auction: proposed bid must be bigger than current bid");
     });
 
@@ -122,9 +123,9 @@ describe("AuctionERC721ETHTemplate", function () {
       const [_owner, receiver] = await ethers.getSigners();
       const { templateInstance } = await factory();
 
-      const bid = Math.floor(Math.random() * 1e5);
+      const bidMultiplier = BigInt(Math.floor(Math.random() * 10));
 
-      const tx = templateInstance.connect(receiver).makeBid({ value: amount + bid });
+      const tx = templateInstance.connect(receiver).makeBid({ value: amount + bidMultiplier });
       await expect(tx).to.be.revertedWith("Auction: bid must be a multiple of the bid step");
     });
   });
@@ -188,31 +189,35 @@ describe("AuctionERC721ETHTemplate", function () {
       const [owner] = await ethers.getSigners();
       const { templateInstance, erc721Instance } = await factory();
 
-      await erc721Instance.safeMint(templateInstance.address, tokenId);
+      await erc721Instance.safeMint(await templateInstance.getAddress(), tokenId);
 
       const current = await time.latestBlock();
       await time.advanceBlockTo(current.add(web3.utils.toBN(span)));
 
       const tx = templateInstance.withdrawAsset();
-      await expect(tx).to.emit(erc721Instance, "Transfer").withArgs(templateInstance.address, owner.address, tokenId);
+      await expect(tx)
+        .to.emit(erc721Instance, "Transfer")
+        .withArgs(await templateInstance.getAddress(), owner.address, tokenId);
     });
 
     it("should withdraw (canceled + no bids)", async function () {
       const [owner] = await ethers.getSigners();
       const { templateInstance, erc721Instance } = await factory();
 
-      await erc721Instance.safeMint(templateInstance.address, tokenId);
+      await erc721Instance.safeMint(await templateInstance.getAddress(), tokenId);
 
       await templateInstance.cancelAuction();
       const tx = templateInstance.withdrawAsset();
-      await expect(tx).to.emit(erc721Instance, "Transfer").withArgs(templateInstance.address, owner.address, tokenId);
+      await expect(tx)
+        .to.emit(erc721Instance, "Transfer")
+        .withArgs(await templateInstance.getAddress(), owner.address, tokenId);
     });
 
     it("should withdraw (bids)", async function () {
       const [_owner, receiver] = await ethers.getSigners();
       const { templateInstance, erc721Instance } = await factory();
 
-      await erc721Instance.safeMint(templateInstance.address, tokenId);
+      await erc721Instance.safeMint(await templateInstance.getAddress(), tokenId);
 
       await templateInstance.connect(receiver).makeBid({ value: amount });
 
@@ -223,20 +228,22 @@ describe("AuctionERC721ETHTemplate", function () {
       const tx = templateInstance.withdrawAsset();
       await expect(tx)
         .to.emit(erc721Instance, "Transfer")
-        .withArgs(templateInstance.address, receiver.address, tokenId);
+        .withArgs(await templateInstance.getAddress(), receiver.address, tokenId);
     });
 
     it("should withdraw (canceled + bids)", async function () {
       const [owner, receiver] = await ethers.getSigners();
       const { templateInstance, erc721Instance } = await factory();
 
-      await erc721Instance.safeMint(templateInstance.address, tokenId);
+      await erc721Instance.safeMint(await templateInstance.getAddress(), tokenId);
 
       await templateInstance.connect(receiver).makeBid({ value: amount });
 
       await templateInstance.cancelAuction();
       const tx = templateInstance.withdrawAsset();
-      await expect(tx).to.emit(erc721Instance, "Transfer").withArgs(templateInstance.address, owner.address, tokenId);
+      await expect(tx)
+        .to.emit(erc721Instance, "Transfer")
+        .withArgs(await templateInstance.getAddress(), owner.address, tokenId);
     });
   });
 
@@ -273,13 +280,13 @@ describe("AuctionERC721ETHTemplate", function () {
       const { templateInstance } = await factory();
 
       await templateInstance.connect(receiver).makeBid({ value: amount });
-      await templateInstance.connect(stranger).makeBid({ value: amount * 2 });
+      await templateInstance.connect(stranger).makeBid({ value: amount * 2n });
 
       const current = await time.latestBlock();
       await time.advanceBlockTo(current.add(web3.utils.toBN(span)));
 
       const tx1 = await templateInstance.withdrawMoney();
-      await expect(tx1).to.changeEtherBalance(owner, amount * 2);
+      await expect(tx1).to.changeEtherBalance(owner, amount * 2n);
 
       const tx2 = await templateInstance.connect(receiver).withdrawMoney();
       await expect(tx2).to.changeEtherBalance(receiver, amount);
@@ -293,7 +300,7 @@ describe("AuctionERC721ETHTemplate", function () {
       const { templateInstance } = await factory();
 
       await templateInstance.connect(receiver).makeBid({ value: amount });
-      await templateInstance.connect(stranger).makeBid({ value: amount * 2 });
+      await templateInstance.connect(stranger).makeBid({ value: amount * 2n });
 
       await templateInstance.cancelAuction();
 
@@ -304,7 +311,7 @@ describe("AuctionERC721ETHTemplate", function () {
       await expect(tx2).to.changeEtherBalance(receiver, amount);
 
       const tx3 = await templateInstance.connect(stranger).withdrawMoney();
-      await expect(tx3).to.changeEtherBalance(stranger, amount * 2);
+      await expect(tx3).to.changeEtherBalance(stranger, amount * 2n);
     });
   });
 });
