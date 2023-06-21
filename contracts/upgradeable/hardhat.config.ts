@@ -1,8 +1,7 @@
 import { config } from "dotenv";
 import { HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
-// https://github.com/OpenZeppelin/openzeppelin-upgrades/issues/805
-// import "@openzeppelin/hardhat-upgrades";
+import "@openzeppelin/hardhat-upgrades";
 
 config();
 
