@@ -7,6 +7,7 @@ export async function deployERC721(): Promise<any> {
   const contractFactory = await ethers.getContractFactory("ERC721AB");
   return contractFactory.deploy(tokenName, tokenSymbol);
 }
+
 export async function deployAuctionFactory(): Promise<any> {
   const contractFactory = await ethers.getContractFactory("AuctionFactory");
   return contractFactory.deploy();
