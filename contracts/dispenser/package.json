@@ -5,11 +5,11 @@
     "url": "https://gemunion.io/"
   },
   "dependencies": {
-    "@gemunion/contracts-constants": "4.0.6",
-    "@gemunion/contracts-erc20": "4.0.6",
-    "@gemunion/contracts-erc721": "4.0.6",
-    "@gemunion/contracts-erc1155": "4.0.6",
-    "@gemunion/contracts-mocks": "4.0.6",
+    "@gemunion/contracts-constants": "4.0.7",
+    "@gemunion/contracts-erc20": "4.0.7",
+    "@gemunion/contracts-erc721": "4.0.7",
+    "@gemunion/contracts-erc1155": "4.0.7",
+    "@gemunion/contracts-mocks": "4.0.7",
     "@nomicfoundation/hardhat-chai-matchers": "2.0.1",
     "@nomicfoundation/hardhat-ethers": "3.0.3",
     "@nomicfoundation/hardhat-network-helpers": "1.0.8",
@@ -26,7 +26,7 @@
   },
   "description": "Collection of contracts and presets",
   "devDependencies": {
-    "@gemunion/contracts-mocha": "4.0.6",
+    "@gemunion/contracts-mocha": "4.0.7",
     "@nomiclabs/hardhat-web3": "2.0.0",
     "@openzeppelin/test-helpers": "0.5.16",
     "@types/chai": "4.3.5",
