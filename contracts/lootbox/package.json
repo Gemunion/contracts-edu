@@ -1,6 +1,6 @@
 {
   "author": {
-    "email": "trejgun+gemunion@gmail.com",
+    "email": "trejgun@gemunion.com",
     "name": "TrejGun",
     "url": "https://gemunion.io/"
   },
@@ -44,7 +44,7 @@
     "web3": "1.10.0"
   },
   "engines": {
-    "node": ">=12.13"
+    "node": ">=18"
   },
   "license": "UNLICENSED",
   "main": "./dist/index.js",
