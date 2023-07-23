@@ -14,21 +14,21 @@
     "@nomicfoundation/hardhat-verify": "1.0.4",
     "@nomiclabs/hardhat-ethers": "2.2.3",
     "@nomiclabs/hardhat-etherscan": "3.1.7",
-    "@typechain/ethers-v6": "0.4.0",
-    "@typechain/hardhat": "8.0.0",
+    "@typechain/ethers-v6": "0.4.2",
+    "@typechain/hardhat": "8.0.2",
     "chai": "4.3.7",
     "hardhat-gas-reporter": "1.0.9",
     "solidity-coverage": "0.8.4",
-    "typechain": "8.2.0"
+    "typechain": "8.3.0"
   },
   "description": "Collection of contracts and presets",
   "devDependencies": {
     "@openzeppelin/contracts": "4.9.0",
     "@types/chai": "4.3.5",
     "@types/mocha": "10.0.1",
-    "@types/node": "18.16.19",
+    "@types/node": "18.17.0",
     "dotenv": "16.3.1",
-    "ethers": "6.6.3",
+    "ethers": "6.6.4",
     "hardhat": "2.17.0",
     "hardhat-deploy": "0.11.34",
     "solhint": "3.4.1",
@@ -43,7 +43,7 @@
   "name": "@gemunion/contracts-examples-oracle",
   "peerDependencies": {
     "@openzeppelin/contracts": "4.9.0",
-    "ethers": "6.6.3"
+    "ethers": "6.6.4"
   },
   "private": true,
   "publishConfig": {
