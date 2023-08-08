@@ -21,7 +21,7 @@
     "typechain": "8.3.1"
   },
   "devDependencies": {
-    "@openzeppelin/contracts": "4.9.2",
+    "@openzeppelin/contracts": "4.9.3",
     "@openzeppelin/contracts-upgradeable": "4.9.2",
     "@openzeppelin/hardhat-upgrades": "2.1.0",
     "@types/chai": "4.3.5",
@@ -44,7 +44,7 @@
   "main": "./dist/index.js",
   "name": "@gemunion/contracts-examples-upgradeable",
   "peerDependencies": {
-    "@openzeppelin/contracts": "4.9.2",
+    "@openzeppelin/contracts": "4.9.3",
     "ethers": "^6.0.0"
   },
   "private": true,
