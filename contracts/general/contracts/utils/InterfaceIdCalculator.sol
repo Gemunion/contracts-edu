@@ -22,6 +22,7 @@ import "@openzeppelin/contracts/token/ERC1155/extensions/IERC1155MetadataURI.sol
 
 import "@openzeppelin/contracts/access/IAccessControl.sol";
 import "@openzeppelin/contracts/access/IAccessControlEnumerable.sol";
+import "@openzeppelin/contracts/access/IAccessControlDefaultAdminRules.sol";
 
 import "@openzeppelin/contracts/utils/introspection/IERC165.sol";
 
@@ -75,6 +76,7 @@ contract InterfaceIdCalculator {
     console.log("IAccessControl");
     console.logBytes4(type(IAccessControl).interfaceId);
     console.logBytes4(type(IAccessControlEnumerable).interfaceId);
+    console.logBytes4(type(IAccessControlDefaultAdminRules).interfaceId);
 
     console.log("IGovernance");
     console.logBytes4(type(IGovernor).interfaceId);
