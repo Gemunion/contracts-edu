@@ -4,13 +4,13 @@
 // Email: trejgun+gemunion@gmail.com
 // Website: https://gemunion.io/
 
-pragma solidity ^0.8.13;
+pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts/utils/Address.sol";
-import "@openzeppelin/contracts/access/AccessControl.sol";
-import "@openzeppelin/contracts/security/Pausable.sol";
-import "@openzeppelin/contracts/utils/cryptography/draft-EIP712.sol";
+import "@openzeppelin/contracts/utils/Pausable.sol";
+import "@openzeppelin/contracts/utils/cryptography/EIP712.sol";
 import "@openzeppelin/contracts/utils/cryptography/SignatureChecker.sol";
+import "@openzeppelin/contracts/access/AccessControl.sol";
 
 import "../interfaces/IERC1155Mintable.sol";
 
@@ -25,9 +25,9 @@ contract EIP712ERC1155 is AccessControl, Pausable, EIP712 {
     keccak256("EIP712(bytes32 nonce,address account,address token,uint256[] tokenIds,uint256[] amounts)");
 
   constructor(string memory name) EIP712(name, "1.0.0") {
-    _setupRole(DEFAULT_ADMIN_ROLE, _msgSender());
-    _setupRole(MINTER_ROLE, _msgSender());
-    _setupRole(PAUSER_ROLE, _msgSender());
+    _grantRole(DEFAULT_ADMIN_ROLE, _msgSender());
+    _grantRole(MINTER_ROLE, _msgSender());
+    _grantRole(PAUSER_ROLE, _msgSender());
   }
 
   function redeem(

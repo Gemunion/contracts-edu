@@ -4,7 +4,7 @@
 // Email: trejgun+gemunion@gmail.com
 // Website: https://gemunion.io/
 
-pragma solidity ^0.8.13;
+pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts/utils/Address.sol";
 
@@ -18,7 +18,7 @@ contract AuctionPaymentReverter {
   IAuctionETH private _auction;
 
   constructor(address auction) {
-    require(auction.isContract());
+    require(auction.code.length != 0);
     _auction = IAuctionETH(auction);
   }
 

@@ -21,8 +21,8 @@ import "@openzeppelin/contracts/token/ERC1155/IERC1155Receiver.sol";
 import "@openzeppelin/contracts/token/ERC1155/extensions/IERC1155MetadataURI.sol";
 
 import "@openzeppelin/contracts/access/IAccessControl.sol";
-import "@openzeppelin/contracts/access/IAccessControlEnumerable.sol";
-import "@openzeppelin/contracts/access/IAccessControlDefaultAdminRules.sol";
+import "@openzeppelin/contracts/access/extensions/IAccessControlEnumerable.sol";
+import "@openzeppelin/contracts/access/extensions/IAccessControlDefaultAdminRules.sol";
 
 import "@openzeppelin/contracts/utils/introspection/IERC165.sol";
 
@@ -70,8 +70,8 @@ contract InterfaceIdCalculator {
     console.logBytes4(type(IERC4906).interfaceId); // erc721 OpenSea metadata
     console.logBytes4(type(IERC4907).interfaceId); // erc721 rent
     console.logBytes4(type(IERC5267).interfaceId); // eip 712 domain
-    console.logBytes4(type(IERC5805).interfaceId); // governance
-    console.logBytes4(type(IERC6372).interfaceId); // governance, has no methods so returns 0x00000000
+    console.logBytes4(type(IERC5805).interfaceId); // governance, has no methods so returns 0x00000000
+    console.logBytes4(type(IERC6372).interfaceId); // governance
 
     console.log("IAccessControl");
     console.logBytes4(type(IAccessControl).interfaceId);

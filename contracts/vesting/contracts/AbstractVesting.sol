@@ -4,16 +4,15 @@
 // Email: trejgun@gemunion.io
 // Website: https://gemunion.io/
 
-pragma solidity ^0.8.13;
+pragma solidity ^0.8.20;
 
-import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/finance/VestingWallet.sol";
 import "@openzeppelin/contracts/governance/utils/IVotes.sol";
 import "@openzeppelin/contracts/utils/Multicall.sol";
 import "@openzeppelin/contracts/utils/math/SafeCast.sol";
 import "@openzeppelin/contracts/utils/introspection/ERC165.sol";
 
-contract AbstractVesting is ERC165, VestingWallet, Ownable, Multicall {
+contract AbstractVesting is ERC165, VestingWallet, Multicall {
   using SafeCast for uint256;
 
   constructor(
@@ -25,7 +24,7 @@ contract AbstractVesting is ERC165, VestingWallet, Ownable, Multicall {
   }
 
   // Vesting beneficiary
-  function beneficiary() public view virtual override returns (address) {
+  function beneficiary() public view virtual returns (address) {
     return owner();
   }
 

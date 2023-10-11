@@ -4,7 +4,7 @@
 // Email: trejgun@gemunion.io
 // Website: https://gemunion.io/
 
-pragma solidity ^0.8.13;
+pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts/utils/introspection/ERC165.sol";
 import "@openzeppelin/contracts/token/ERC721/utils/ERC721Holder.sol";
@@ -34,7 +34,7 @@ contract ReentrancyDispenser is ERC165, ERC721Holder, ERC1155Holder {
     address operator,
     address from,
     uint256 tokenId,
-    bytes calldata data
+    bytes memory data
   ) public override returns (bytes4) {
     (bool success, ) = address(Disperse).call(
       abi.encodeWithSelector(IDispenser(Disperse).disperseERC721.selector, Token, receivers, tokenIds)
@@ -48,7 +48,7 @@ contract ReentrancyDispenser is ERC165, ERC721Holder, ERC1155Holder {
     address from,
     uint256 id,
     uint256 value,
-    bytes calldata data
+    bytes memory data
   ) public virtual override returns (bytes4) {
     (bool success, ) = address(Disperse).call(
       abi.encodeWithSelector(IDispenser(Disperse).disperseERC1155.selector, Token, receivers, tokenIds, amounts)
@@ -67,7 +67,7 @@ contract ReentrancyDispenser is ERC165, ERC721Holder, ERC1155Holder {
   /**
    * @dev See {IERC165-supportsInterface}.
    */
-  function supportsInterface(bytes4 interfaceId) public view virtual override(ERC165, ERC1155Receiver) returns (bool) {
+  function supportsInterface(bytes4 interfaceId) public view virtual override(ERC165, ERC1155Holder) returns (bool) {
     return
     interfaceId == type(IERC721Receiver).interfaceId ||
     interfaceId == type(IERC1155Receiver).interfaceId ||

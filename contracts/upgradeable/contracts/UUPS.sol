@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.8.13;
+pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
@@ -15,7 +15,7 @@ contract UUPS1 is Initializable, OwnableUpgradeable, UUPSUpgradeable {
   }
 
   function initialize() public initializer {
-    __Ownable_init();
+    __Ownable_init(_msgSender());
     __UUPSUpgradeable_init();
   }
 
@@ -35,7 +35,7 @@ contract UUPS2 is Initializable, OwnableUpgradeable, UUPSUpgradeable {
   }
 
   function initialize() public initializer {
-    __Ownable_init();
+    __Ownable_init(_msgSender());
     __UUPSUpgradeable_init();
   }
 

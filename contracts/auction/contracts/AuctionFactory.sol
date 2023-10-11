@@ -4,10 +4,10 @@
 // Email: trejgun+gemunion@gmail.com
 // Website: https://gemunion.io/
 
-pragma solidity ^0.8.13;
+pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts/access/AccessControl.sol";
-import "@openzeppelin/contracts/security/Pausable.sol";
+import "@openzeppelin/contracts/utils/Pausable.sol";
 
 import "./AuctionERC721ETHTemplate.sol";
 
@@ -29,8 +29,8 @@ contract AuctionFactory is AccessControl, Pausable {
   );
 
   constructor() {
-    _setupRole(DEFAULT_ADMIN_ROLE, _msgSender());
-    _setupRole(PAUSER_ROLE, _msgSender());
+    _grantRole(DEFAULT_ADMIN_ROLE, _msgSender());
+    _grantRole(PAUSER_ROLE, _msgSender());
   }
 
   function createAuction(

@@ -4,18 +4,14 @@
 // Email: trejgun+gemunion@gmail.com
 // Website: https://gemunion.io/
 
-pragma solidity ^0.8.13;
-
-import "@openzeppelin/contracts/utils/Counters.sol";
+pragma solidity ^0.8.20;
 
 import "@gemunion/contracts-chain-link/contracts/extensions/ChainLinkHardhat.sol";
-import "@gemunion/contracts-erc721-enumerable/contracts/preset/ERC721ABCE.sol";
+import "@gemunion/contracts-erc721e/contracts/preset/ERC721ABEC.sol";
 
 import "./interfaces/IERC721ChainLink.sol";
 
-contract ChainLinkTokenMock is ChainLinkHardhat, IERC721ChainLink, ERC721ABCE {
-  using Counters for Counters.Counter;
-
+contract ChainLinkTokenMock is ChainLinkHardhat, IERC721ChainLink, ERC721ABEC {
   // tokenId => rarity
   mapping(uint256 => uint256) private _rarity;
   // requestId => owner
@@ -28,7 +24,7 @@ contract ChainLinkTokenMock is ChainLinkHardhat, IERC721ChainLink, ERC721ABCE {
     address vrf,
     bytes32 keyHash,
     uint256 fee
-  ) ERC721ABCE(name, symbol, 1000) ChainLinkHardhat() {}
+  ) ERC721ABEC(name, symbol, 1000) ChainLinkHardhat() {}
 
   function mintRandom(address to) external override onlyRole(MINTER_ROLE) {
     _queue[getRandomNumber()] = to;
@@ -37,15 +33,14 @@ contract ChainLinkTokenMock is ChainLinkHardhat, IERC721ChainLink, ERC721ABCE {
   event MintRandom(address owner, bytes32 requestId);
 
   function fulfillRandomness(bytes32 requestId, uint256 randomness) internal override {
-    _rarity[_tokenIdTracker.current()] = (randomness % 100) + 1;
+    _rarity[_nextTokenId] = (randomness % 100) + 1;
     emit MintRandom(_queue[requestId], requestId);
     mint(_queue[requestId]);
     delete _queue[requestId];
   }
 
   function mint(address to) public override onlyRole(MINTER_ROLE) {
-    _safeMint(to, _tokenIdTracker.current());
-    _tokenIdTracker.increment();
+    _safeMint(to, _nextTokenId++);
   }
 
   receive() external payable {

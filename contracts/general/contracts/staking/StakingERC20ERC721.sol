@@ -4,19 +4,17 @@
 // Email: trejgun+gemunion@gmail.com
 // Website: https://gemunion.io/
 
-pragma solidity ^0.8.13;
+pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts/utils/Address.sol";
 import "@openzeppelin/contracts/access/AccessControl.sol";
-import "@openzeppelin/contracts/security/Pausable.sol";
+import "@openzeppelin/contracts/utils/Pausable.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import "@openzeppelin/contracts/utils/Counters.sol";
 
 import "../interfaces/IERC721Enumerable.sol";
 
 contract StakingERC20ERC721 is AccessControl, Pausable {
   using Address for address;
-  using Counters for Counters.Counter;
 
   uint256[] private _periods; // seconds
   uint256[] private _amounts; // wei
@@ -24,7 +22,7 @@ contract StakingERC20ERC721 is AccessControl, Pausable {
   IERC20 private _acceptedToken;
   IERC721Enumerable private _rewardToken;
 
-  Counters.Counter private _stakeIdCounter;
+  uint256 private _stakeIdCounter;
 
   bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
 
@@ -42,13 +40,13 @@ contract StakingERC20ERC721 is AccessControl, Pausable {
   event StakingFinish(uint256 stakingId, address owner, uint256 finishTimestamp);
 
   constructor(address acceptedToken, address rewardToken, uint256[] memory periods, uint256[] memory amounts) {
-    require(acceptedToken.isContract(), "Staking: The accepted token address must be a deployed contract");
+    require(acceptedToken.code.length != 0, "Staking: The accepted token address must be a deployed contract");
     _acceptedToken = IERC20(acceptedToken);
-    require(rewardToken.isContract(), "Staking: The reward token address must be a deployed contract");
+    require(rewardToken.code.length != 0, "Staking: The reward token address must be a deployed contract");
     _rewardToken = IERC721Enumerable(rewardToken);
 
-    _setupRole(DEFAULT_ADMIN_ROLE, _msgSender());
-    _setupRole(PAUSER_ROLE, _msgSender());
+    _grantRole(DEFAULT_ADMIN_ROLE, _msgSender());
+    _grantRole(PAUSER_ROLE, _msgSender());
 
     setNewRules(periods, amounts);
   }
@@ -70,8 +68,7 @@ contract StakingERC20ERC721 is AccessControl, Pausable {
 
     _acceptedToken.transferFrom(_msgSender(), address(this), _amounts[level]);
 
-    uint256 stakeId = _stakeIdCounter.current();
-    _stakeIdCounter.increment();
+    uint256 stakeId = _stakeIdCounter++;
 
     _stakes[stakeId] = StakingData(_msgSender(), block.timestamp, _periods[level], _amounts[level]);
     emit StakingStart(stakeId, _msgSender(), block.timestamp, _periods[level], _amounts[level]);

@@ -4,7 +4,7 @@
 // Email: trejgun+gemunion@gmail.com
 // Website: https://gemunion.io/
 
-pragma solidity ^0.8.13;
+pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 
@@ -20,7 +20,7 @@ contract AuctionERC721ETHTemplate is AuctionHelper {
     uint256 buyoutPrice,
     uint256 startTimestamp,
     uint256 finishTimestamp
-  ) {
+  ) Ownable(_msgSender()) {
     require(collection != address(0), "Auction: collection address cannot be zero");
     require(startTimestamp < finishTimestamp, "Auction: auction start time should be less than end time");
 

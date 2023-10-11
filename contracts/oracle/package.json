@@ -23,7 +23,7 @@
   },
   "description": "Collection of contracts and presets",
   "devDependencies": {
-    "@openzeppelin/contracts": "4.9.3",
+    "@openzeppelin/contracts": "5.0.0",
     "@types/chai": "4.3.7",
     "@types/mocha": "10.0.2",
     "@types/node": "18.18.4",
@@ -42,7 +42,7 @@
   "main": "./dist/index.js",
   "name": "@gemunion/contracts-examples-oracle",
   "peerDependencies": {
-    "@openzeppelin/contracts": "4.9.3",
+    "@openzeppelin/contracts": "5.0.0",
     "ethers": "6.8.0"
   },
   "private": true,

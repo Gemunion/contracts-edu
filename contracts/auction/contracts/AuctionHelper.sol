@@ -4,12 +4,12 @@
 // Email: trejgun+gemunion@gmail.com
 // Website: https://gemunion.io/
 
-pragma solidity ^0.8.13;
+pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC721/utils/ERC721Holder.sol";
 
-contract AuctionHelper is Ownable, ERC721Holder {
+abstract contract AuctionHelper is Ownable, ERC721Holder {
   address _collection;
   uint256 _tokenId;
   uint256 _startPrice;

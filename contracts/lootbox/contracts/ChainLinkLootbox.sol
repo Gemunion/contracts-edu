@@ -4,24 +4,24 @@
 // Email: trejgun+gemunion@gmail.com
 // Website: https://gemunion.io/
 
-pragma solidity ^0.8.13;
+pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts/utils/Address.sol";
-import "@openzeppelin/contracts/security/Pausable.sol";
+import "@openzeppelin/contracts/utils/Pausable.sol";
 
-import "@gemunion/contracts-erc721-enumerable/contracts/preset/ERC721ABCE.sol";
+import "@gemunion/contracts-erc721e/contracts/preset/ERC721ABEC.sol";
 
 import "./interfaces/IERC721ChainLink.sol";
 
-contract ChainLinkLootboxMock is ERC721ABCE, Pausable {
+contract ChainLinkLootboxMock is ERC721ABEC, Pausable {
   using Address for address;
 
   bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
 
   IERC721ChainLink _factory;
 
-  constructor(string memory name, string memory symbol) ERC721ABCE(name, symbol, 1000) {
-    _setupRole(PAUSER_ROLE, _msgSender());
+  constructor(string memory name, string memory symbol) ERC721ABEC(name, symbol, 1000) {
+    _grantRole(PAUSER_ROLE, _msgSender());
   }
 
   receive() external payable {
@@ -29,12 +29,12 @@ contract ChainLinkLootboxMock is ERC721ABCE, Pausable {
   }
 
   function setFactory(address factory) external onlyRole(DEFAULT_ADMIN_ROLE) {
-    require(factory.isContract(), "LootBox: the factory must be a deployed contract");
+    require(factory.code.length != 0, "LootBox: the factory must be a deployed contract");
     _factory = IERC721ChainLink(factory);
   }
 
   function unpack(uint256 _tokenId) public whenNotPaused {
-    require(_isApprovedOrOwner(_msgSender(), _tokenId), "LootBox: unpack caller is not owner nor approved");
+    require(_isAuthorized(_ownerOf(_tokenId), _msgSender(), _tokenId), "LootBox: unpack caller is not owner nor approved");
     _factory.mintRandom(_msgSender());
     _burn(_tokenId);
   }
