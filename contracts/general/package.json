@@ -30,13 +30,13 @@
   "devDependencies": {
     "@nomiclabs/hardhat-web3": "2.0.0",
     "@openzeppelin/contracts": "4.9.3",
-    "@types/chai": "4.3.6",
+    "@types/chai": "4.3.7",
     "@types/mocha": "10.0.2",
-    "@types/node": "18.18.3",
+    "@types/node": "18.18.4",
     "dotenv": "16.3.1",
-    "ethers": "6.7.1",
+    "ethers": "6.8.0",
     "hardhat": "2.18.0",
-    "hardhat-deploy": "0.11.37",
+    "hardhat-deploy": "0.11.42",
     "solhint": "3.6.2",
     "solhint-plugin-prettier": "0.0.5",
     "ts-node": "10.9.1",
@@ -50,7 +50,7 @@
   "name": "@gemunion/contracts-examples-general",
   "peerDependencies": {
     "@openzeppelin/contracts": "4.9.3",
-    "ethers": "6.7.1"
+    "ethers": "6.8.0"
   },
   "private": true,
   "publishConfig": {
