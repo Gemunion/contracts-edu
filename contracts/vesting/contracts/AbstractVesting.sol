@@ -6,11 +6,11 @@
 
 pragma solidity ^0.8.20;
 
-import "@openzeppelin/contracts/finance/VestingWallet.sol";
-import "@openzeppelin/contracts/governance/utils/IVotes.sol";
-import "@openzeppelin/contracts/utils/Multicall.sol";
-import "@openzeppelin/contracts/utils/math/SafeCast.sol";
-import "@openzeppelin/contracts/utils/introspection/ERC165.sol";
+import {VestingWallet} from "@openzeppelin/contracts/finance/VestingWallet.sol";
+import {IVotes} from "@openzeppelin/contracts/governance/utils/IVotes.sol";
+import {Multicall} from "@openzeppelin/contracts/utils/Multicall.sol";
+import {SafeCast} from "@openzeppelin/contracts/utils/math/SafeCast.sol";
+import {ERC165} from "@openzeppelin/contracts/utils/introspection/ERC165.sol";
 
 contract AbstractVesting is ERC165, VestingWallet, Multicall {
   using SafeCast for uint256;

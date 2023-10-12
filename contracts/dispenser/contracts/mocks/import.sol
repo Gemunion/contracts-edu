@@ -6,9 +6,9 @@
 
 pragma solidity ^0.8.20;
 
-import "@gemunion/contracts-mocks/contracts/Wallet.sol";
-import "@gemunion/contracts-mocks/contracts/Jerk.sol";
+import {Wallet} from "@gemunion/contracts-mocks/contracts/Wallet.sol";
+import {Jerk} from "@gemunion/contracts-mocks/contracts/Jerk.sol";
 
-import "@gemunion/contracts-erc20/contracts/preset/ERC20AB.sol";
-import "@gemunion/contracts-erc721/contracts/preset/ERC721AB.sol";
-import "@gemunion/contracts-erc1155/contracts/preset/ERC1155AB.sol";
+import {ERC20AB} from "@gemunion/contracts-erc20/contracts/preset/ERC20AB.sol";
+import {ERC721AB} from "@gemunion/contracts-erc721/contracts/preset/ERC721AB.sol";
+import {ERC1155AB} from "@gemunion/contracts-erc1155/contracts/preset/ERC1155AB.sol";

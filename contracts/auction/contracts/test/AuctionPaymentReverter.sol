@@ -6,7 +6,7 @@
 
 pragma solidity ^0.8.20;
 
-import "@openzeppelin/contracts/utils/Address.sol";
+import {Address} from "@openzeppelin/contracts/utils/Address.sol";
 
 interface IAuctionETH {
   function makeBid(uint256 auctionId) external payable;

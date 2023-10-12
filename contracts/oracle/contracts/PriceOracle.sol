@@ -6,7 +6,7 @@
 
 pragma solidity ^0.8.20;
 
-import "@openzeppelin/contracts/access/Ownable.sol";
+import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 
 contract PriceOracle is Ownable {
   uint256 public _price = 0.0000000000001 ether;

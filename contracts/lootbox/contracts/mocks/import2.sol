@@ -6,4 +6,4 @@
 
 pragma solidity ^0.4.11;
 
-import "@gemunion/contracts-chain-link/contracts/mocks/LinkToken.sol";
+import {LinkToken} from "@gemunion/contracts-chain-link/contracts/mocks/LinkToken.sol";
