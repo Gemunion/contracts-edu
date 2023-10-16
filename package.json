@@ -11,7 +11,7 @@
   },
   "devDependencies": {
     "@gemunion/eslint-config": "4.0.5",
-    "@types/node": "18.18.4",
+    "@types/node": "18.18.5",
     "@typescript-eslint/eslint-plugin": "6.7.5",
     "@typescript-eslint/parser": "6.7.5",
     "eslint": "8.51.0",
@@ -23,7 +23,7 @@
     "eslint-plugin-n": "16.2.0",
     "eslint-plugin-prettier": "5.0.1",
     "eslint-plugin-promise": "6.1.1",
-    "eslint-plugin-testing-library": "6.0.2",
+    "eslint-plugin-testing-library": "6.1.0",
     "husky": "4.3.8",
     "lint-staged": "14.0.1",
     "prettier": "3.0.3",
