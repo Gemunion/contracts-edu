@@ -5,12 +5,12 @@
     "url": "https://gemunion.io/"
   },
   "dependencies": {
-    "@gemunion/contracts-chain-link": "5.0.11",
-    "@gemunion/contracts-constants": "5.0.11",
-    "@gemunion/contracts-erc721": "5.0.11",
-    "@gemunion/contracts-erc721e": "5.0.11",
+    "@gemunion/contracts-chain-link": "5.0.17",
+    "@gemunion/contracts-constants": "5.0.17",
+    "@gemunion/contracts-erc721": "5.0.17",
+    "@gemunion/contracts-erc721e": "5.0.17",
     "@gemunion/contracts-mocha": "4.0.20",
-    "@gemunion/contracts-mocks": "5.0.11",
+    "@gemunion/contracts-mocks": "5.0.17",
     "@nomicfoundation/hardhat-chai-matchers": "2.0.2",
     "@nomicfoundation/hardhat-ethers": "3.0.4",
     "@nomicfoundation/hardhat-network-helpers": "1.0.9",
