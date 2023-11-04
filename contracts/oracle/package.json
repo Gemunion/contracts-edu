@@ -26,13 +26,13 @@
     "@openzeppelin/contracts": "5.0.0",
     "@types/chai": "4.3.9",
     "@types/mocha": "10.0.3",
-    "@types/node": "18.18.7",
+    "@types/node": "18.18.8",
     "dotenv": "16.3.1",
-    "ethers": "6.8.0",
-    "hardhat": "2.18.3",
+    "ethers": "6.8.1",
+    "hardhat": "2.19.0",
     "hardhat-deploy": "0.11.43",
     "solhint": "3.6.2",
-    "solhint-plugin-prettier": "0.0.5",
+    "solhint-plugin-prettier": "0.1.0",
     "ts-node": "10.9.1"
   },
   "engines": {
@@ -43,7 +43,7 @@
   "name": "@gemunion/contracts-examples-oracle",
   "peerDependencies": {
     "@openzeppelin/contracts": "5.0.0",
-    "ethers": "6.8.0"
+    "ethers": "6.8.1"
   },
   "private": true,
   "publishConfig": {
