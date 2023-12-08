@@ -7,15 +7,15 @@
   "dependencies": {
     "@lerna/legacy-package-management": "7.4.2",
     "lerna": "7.4.2",
-    "nx": "17.1.2"
+    "nx": "17.2.0"
   },
   "devDependencies": {
     "@gemunion/eslint-config": "4.0.5",
-    "@types/node": "18.18.9",
-    "@typescript-eslint/eslint-plugin": "6.11.0",
-    "@typescript-eslint/parser": "6.11.0",
-    "eslint": "8.54.0",
-    "eslint-config-prettier": "9.0.0",
+    "@types/node": "18.19.3",
+    "@typescript-eslint/eslint-plugin": "6.13.2",
+    "@typescript-eslint/parser": "6.13.2",
+    "eslint": "8.55.0",
+    "eslint-config-prettier": "9.1.0",
     "eslint-config-standard": "17.1.0",
     "eslint-import-resolver-typescript": "3.6.1",
     "eslint-plugin-import": "2.29.0",
@@ -23,12 +23,12 @@
     "eslint-plugin-n": "16.3.1",
     "eslint-plugin-prettier": "5.0.1",
     "eslint-plugin-promise": "6.1.1",
-    "eslint-plugin-testing-library": "6.1.2",
+    "eslint-plugin-testing-library": "6.2.0",
     "husky": "4.3.8",
-    "lint-staged": "15.1.0",
+    "lint-staged": "15.2.0",
     "prettier": "3.1.0",
     "prettier-plugin-solidity": "1.2.0",
-    "typescript": "5.2.2"
+    "typescript": "5.3.3"
   },
   "engines": {
     "node": ">=18"
