@@ -11,7 +11,7 @@
     "@gemunion/contracts-erc721e": "5.0.17",
     "@gemunion/contracts-mocha": "4.0.20",
     "@gemunion/contracts-mocks": "5.0.17",
-    "@nomicfoundation/hardhat-chai-matchers": "2.0.2",
+    "@nomicfoundation/hardhat-chai-matchers": "2.0.3",
     "@nomicfoundation/hardhat-ethers": "3.0.5",
     "@nomicfoundation/hardhat-network-helpers": "1.0.10",
     "@nomicfoundation/hardhat-toolbox": "3.0.0",
@@ -33,11 +33,11 @@
     "@openzeppelin/test-helpers": "0.5.16",
     "@types/chai": "4.3.11",
     "@types/mocha": "10.0.6",
-    "@types/node": "18.19.3",
+    "@types/node": "18.19.4",
     "dotenv": "16.3.1",
-    "ethers": "6.9.0",
-    "hardhat": "2.19.2",
-    "hardhat-deploy": "0.11.44",
+    "ethers": "6.9.1",
+    "hardhat": "2.19.4",
+    "hardhat-deploy": "0.11.45",
     "solhint": "3.6.2",
     "solhint-plugin-prettier": "0.1.0",
     "ts-node": "10.9.2",
@@ -51,7 +51,7 @@
   "name": "@gemunion/contracts-examples-lootbox",
   "peerDependencies": {
     "@openzeppelin/contracts": "5.0.1",
-    "ethers": "6.9.0"
+    "ethers": "6.9.1"
   },
   "private": true,
   "publishConfig": {
