@@ -21,7 +21,7 @@
     "@nomiclabs/hardhat-etherscan": "3.1.8",
     "@typechain/ethers-v6": "0.5.1",
     "@typechain/hardhat": "9.1.0",
-    "chai": "4.3.10",
+    "chai": "4.4.1",
     "hardhat-gas-reporter": "1.0.9",
     "solidity-coverage": "0.8.5",
     "typechain": "8.3.2"
@@ -32,9 +32,9 @@
     "@openzeppelin/contracts": "5.0.1",
     "@types/chai": "4.3.11",
     "@types/mocha": "10.0.6",
-    "@types/node": "18.19.4",
-    "dotenv": "16.3.1",
-    "ethers": "6.9.1",
+    "@types/node": "18.19.8",
+    "dotenv": "16.3.2",
+    "ethers": "6.10.0",
     "hardhat": "2.19.4",
     "hardhat-deploy": "0.11.45",
     "solhint": "3.6.2",
@@ -50,7 +50,7 @@
   "name": "@gemunion/contracts-examples-general",
   "peerDependencies": {
     "@openzeppelin/contracts": "5.0.1",
-    "ethers": "6.9.1"
+    "ethers": "6.10.0"
   },
   "private": true,
   "publishConfig": {
