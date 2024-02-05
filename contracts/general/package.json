@@ -12,7 +12,7 @@
     "@gemunion/contracts-erc721": "5.0.17",
     "@gemunion/contracts-mocha": "4.0.20",
     "@gemunion/utils": "1.3.5",
-    "@nomicfoundation/hardhat-chai-matchers": "2.0.3",
+    "@nomicfoundation/hardhat-chai-matchers": "2.0.4",
     "@nomicfoundation/hardhat-ethers": "3.0.5",
     "@nomicfoundation/hardhat-network-helpers": "1.0.10",
     "@nomicfoundation/hardhat-toolbox": "3.0.0",
@@ -22,8 +22,8 @@
     "@typechain/ethers-v6": "0.5.1",
     "@typechain/hardhat": "9.1.0",
     "chai": "4.4.1",
-    "hardhat-gas-reporter": "1.0.9",
-    "solidity-coverage": "0.8.5",
+    "hardhat-gas-reporter": "1.0.10",
+    "solidity-coverage": "0.8.6",
     "typechain": "8.3.2"
   },
   "description": "Collection of contracts and presets",
@@ -32,15 +32,15 @@
     "@openzeppelin/contracts": "5.0.1",
     "@types/chai": "4.3.11",
     "@types/mocha": "10.0.6",
-    "@types/node": "18.19.8",
-    "dotenv": "16.3.2",
+    "@types/node": "18.19.14",
+    "dotenv": "16.4.1",
     "ethers": "6.10.0",
-    "hardhat": "2.19.4",
+    "hardhat": "2.19.5",
     "hardhat-deploy": "0.11.45",
     "solhint": "3.6.2",
     "solhint-plugin-prettier": "0.1.0",
     "ts-node": "10.9.2",
-    "web3": "1.10.3"
+    "web3": "1.10.4"
   },
   "engines": {
     "node": ">=18"
