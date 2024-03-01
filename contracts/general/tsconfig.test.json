@@ -3,5 +3,6 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true
   },
+  "exclude": ["node_modules", "dist"],
   "extends": "./tsconfig.json"
 }

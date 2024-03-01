@@ -1,4 +1,6 @@
-/typechain-types
-/cache
-/artifacts
-/coverage
+dist/*
+coverage/*
+
+typechain-types/*
+cache/*
+artifacts/*
