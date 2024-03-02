@@ -6,7 +6,7 @@
   },
   "dependencies": {
     "@gemunion/contracts-mocha": "4.0.20",
-    "@gemunion/contracts-mocks": "5.0.17",
+    "@gemunion/contracts-mocks": "5.0.19",
     "@nomicfoundation/hardhat-chai-matchers": "2.0.6",
     "@nomicfoundation/hardhat-ethers": "3.0.5",
     "@nomicfoundation/hardhat-network-helpers": "1.0.10",
