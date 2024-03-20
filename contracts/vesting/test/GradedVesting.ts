@@ -2,7 +2,7 @@ import { expect } from "chai";
 import { ethers, web3 } from "hardhat";
 import { time } from "@openzeppelin/test-helpers";
 
-import { shouldBehaveLikeOwnable } from "@gemunion/contracts-mocha";
+import { shouldBehaveLikeOwnable } from "@gemunion/contracts-access";
 import { amount, span } from "@gemunion/contracts-constants";
 
 import { deployERC20, deployVesting } from "./shared/fixture";

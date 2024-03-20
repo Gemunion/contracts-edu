@@ -4,13 +4,14 @@ import { ZeroAddress } from "ethers";
 
 import { amount, tokenId } from "@gemunion/contracts-constants";
 import { deployContract, deployJerk, deployWallet } from "@gemunion/contracts-mocks";
-import { shouldSupportsInterface } from "@gemunion/contracts-mocha";
+import { shouldSupportsInterface } from "@gemunion/contracts-utils";
 
 import { checkIfInLogs } from "./shared/utils";
 import { deployERC20, deployERC721, deployERC1155 } from "./shared/fixture";
 
 describe("Dispenser", function () {
   const factory = () => deployContract("Dispenser");
+
   describe("NATIVE", function () {
     it("should fail: deposit ether", async function () {
       const [owner] = await ethers.getSigners();

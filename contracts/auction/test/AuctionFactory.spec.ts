@@ -4,8 +4,8 @@ import { ZeroAddress } from "ethers";
 import { time } from "@openzeppelin/test-helpers";
 
 import { amount, DEFAULT_ADMIN_ROLE, PAUSER_ROLE, span, tokenId } from "@gemunion/contracts-constants";
-
-import { shouldBehaveLikeAccessControl, shouldBehaveLikePausable } from "@gemunion/contracts-mocha";
+import { shouldBehaveLikeAccessControl } from "@gemunion/contracts-access";
+import { shouldBehaveLikePausable } from "@gemunion/contracts-utils";
 
 import { deployAuctionFactory, deployERC721 } from "./shared/fixtures";
 
@@ -174,7 +174,7 @@ describe("AuctionFactory", function () {
           timestamp + span,
         );
 
-      await expect(tx).to.be.revertedWith("ERC721: transfer from incorrect owner");
+      await expect(tx).to.be.revertedWithCustomError(erc721Instance, "ERC721IncorrectOwner");
     });
   });
 

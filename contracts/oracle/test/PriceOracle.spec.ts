@@ -1,7 +1,7 @@
 import { expect } from "chai";
 import { ethers } from "hardhat";
 
-import { shouldBehaveLikeOwnable } from "@gemunion/contracts-mocha";
+import { shouldBehaveLikeOwnable } from "@gemunion/contracts-access";
 import { deployContract } from "@gemunion/contracts-mocks";
 
 describe("PriceOracle", function () {
@@ -24,7 +24,9 @@ describe("PriceOracle", function () {
       const contractInstance = await factory();
 
       const tx = contractInstance.connect(receiver).updatePrice(price);
-      await expect(tx).to.be.revertedWith("Ownable: caller is not the owner");
+      await expect(tx)
+        .to.be.revertedWithCustomError(contractInstance, "OwnableUnauthorizedAccount")
+        .withArgs(receiver.address);
     });
   });
 });

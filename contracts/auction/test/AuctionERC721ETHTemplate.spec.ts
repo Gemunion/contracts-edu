@@ -3,7 +3,7 @@ import { ethers, web3 } from "hardhat";
 import { time } from "@openzeppelin/test-helpers";
 
 import { amount, span, tokenId } from "@gemunion/contracts-constants";
-import { shouldBehaveLikeOwnable } from "@gemunion/contracts-mocha";
+import { shouldBehaveLikeOwnable } from "@gemunion/contracts-access";
 
 import { deployAuction, deployERC721 } from "./shared/fixtures";
 
@@ -162,7 +162,9 @@ describe("AuctionERC721ETHTemplate", function () {
       const { templateInstance } = await factory();
 
       const tx = templateInstance.connect(receiver).cancelAuction();
-      await expect(tx).to.be.revertedWith("Ownable: caller is not the owner");
+      await expect(tx)
+        .to.be.revertedWithCustomError(templateInstance, "OwnableUnauthorizedAccount")
+        .withArgs(receiver.address);
     });
 
     it("should fail: auction is already finished", async function () {

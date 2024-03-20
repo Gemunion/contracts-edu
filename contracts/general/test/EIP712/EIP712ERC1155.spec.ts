@@ -40,8 +40,8 @@ describe("EIP712ERC1155", function () {
           nonce,
           account: receiver.address,
           token: await erc1155Instance.getAddress(),
-          tokenIds: [tokenId],
-          amounts: [amount],
+          tokenIds: [tokenId, tokenId + 1n],
+          amounts: [amount, amount],
         },
       );
 
@@ -51,14 +51,20 @@ describe("EIP712ERC1155", function () {
           nonce,
           receiver.address,
           await erc1155Instance.getAddress(),
-          [tokenId],
-          [amount],
+          [tokenId, tokenId + 1n],
+          [amount, amount],
           owner.address,
           signature,
         );
       await expect(tx1)
         .to.emit(erc1155Instance, "TransferBatch")
-        .withArgs(await dropboxInstance.getAddress(), ZeroAddress, receiver.address, [tokenId], [amount]);
+        .withArgs(
+          await dropboxInstance.getAddress(),
+          ZeroAddress,
+          receiver.address,
+          [tokenId, tokenId + 1n],
+          [amount, amount],
+        );
     });
 
     it("should fail: duplicate mint", async function () {
@@ -94,8 +100,8 @@ describe("EIP712ERC1155", function () {
           nonce,
           account: receiver.address,
           token: await erc1155Instance.getAddress(),
-          tokenIds: [tokenId],
-          amounts: [amount],
+          tokenIds: [tokenId, tokenId + 1n],
+          amounts: [amount, amount],
         },
       );
 
@@ -105,14 +111,20 @@ describe("EIP712ERC1155", function () {
           nonce,
           receiver.address,
           await erc1155Instance.getAddress(),
-          [tokenId],
-          [amount],
+          [tokenId, tokenId + 1n],
+          [amount, amount],
           owner.address,
           signature,
         );
       await expect(tx1)
         .to.emit(erc1155Instance, "TransferBatch")
-        .withArgs(await dropboxInstance.getAddress(), ZeroAddress, receiver.address, [tokenId], [amount]);
+        .withArgs(
+          await dropboxInstance.getAddress(),
+          ZeroAddress,
+          receiver.address,
+          [tokenId, tokenId + 1n],
+          [amount, amount],
+        );
 
       const tx2 = dropboxInstance
         .connect(stranger)
@@ -120,8 +132,8 @@ describe("EIP712ERC1155", function () {
           nonce,
           receiver.address,
           await erc1155Instance.getAddress(),
-          [tokenId],
-          [amount],
+          [tokenId, tokenId + 1n],
+          [amount, amount],
           owner.address,
           signature,
         );

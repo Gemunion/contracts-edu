@@ -5,17 +5,18 @@
     "url": "https://gemunion.io/"
   },
   "dependencies": {
-    "@gemunion/contracts-constants": "5.0.19",
-    "@gemunion/contracts-erc1155": "5.0.19",
-    "@gemunion/contracts-erc20": "5.0.19",
-    "@gemunion/contracts-erc1363": "5.0.19",
-    "@gemunion/contracts-erc721": "5.0.19",
-    "@gemunion/contracts-mocha": "4.0.20",
+    "@gemunion/contracts-constants": "5.0.17",
+    "@gemunion/contracts-erc1155": "5.0.17",
+    "@gemunion/contracts-erc1363": "5.0.17",
+    "@gemunion/contracts-erc20": "5.0.17",
+    "@gemunion/contracts-erc721": "5.0.17",
     "@gemunion/utils": "1.3.5",
     "@nomicfoundation/hardhat-chai-matchers": "2.0.6",
     "@nomicfoundation/hardhat-ethers": "3.0.5",
+    "@nomicfoundation/hardhat-ignition": "0.15.0",
+    "@nomicfoundation/hardhat-ignition-ethers": "0.15.0",
     "@nomicfoundation/hardhat-network-helpers": "1.0.10",
-    "@nomicfoundation/hardhat-toolbox": "4.0.0",
+    "@nomicfoundation/hardhat-toolbox": "5.0.0",
     "@nomicfoundation/hardhat-verify": "2.0.4",
     "@nomiclabs/hardhat-ethers": "2.2.3",
     "@nomiclabs/hardhat-etherscan": "3.1.8",
@@ -63,13 +64,13 @@
   "scripts": {
     "build": "hardhat compile",
     "clean": "hardhat clean",
+    "coverage": "hardhat coverage",
     "deploy": "hardhat deploy",
     "lint": "eslint . --fix",
     "prebuild": "hardhat clean",
     "preversion": "npm run build",
     "solhint": "solhint -f table contracts/**/*.sol contracts/**/**/*.sol",
-    "test": "hardhat test",
-    "coverage": "hardhat coverage"
+    "test": "hardhat test"
   },
   "types": "./typechain-types/index.ts",
   "version": "2.0.0"
