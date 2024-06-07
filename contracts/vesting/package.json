@@ -5,8 +5,8 @@
     "url": "https://gemunion.io/"
   },
   "dependencies": {
-    "@gemunion/contracts-constants": "5.0.28",
-    "@gemunion/contracts-erc20": "5.0.28",
+    "@gemunion/contracts-constants": "5.0.29",
+    "@gemunion/contracts-erc20": "5.0.29",
     "@nomicfoundation/hardhat-chai-matchers": "2.0.7",
     "@nomicfoundation/hardhat-ethers": "3.0.6",
     "@nomicfoundation/hardhat-ignition": "0.15.4",
@@ -24,7 +24,7 @@
   },
   "description": "Collection of contracts and presets",
   "devDependencies": {
-    "@gemunion/contracts-access": "5.0.28",
+    "@gemunion/contracts-access": "5.0.29",
     "@nomiclabs/hardhat-web3": "2.0.0",
     "@openzeppelin/test-helpers": "0.5.16",
     "@types/chai": "4.3.16",
