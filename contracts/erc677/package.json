@@ -5,8 +5,8 @@
     "url": "https://gemunion.io/"
   },
   "dependencies": {
-    "@nomicfoundation/hardhat-ignition": "0.15.4",
-    "@nomicfoundation/hardhat-ignition-ethers": "0.15.4",
+    "@nomicfoundation/hardhat-ignition": "0.15.5",
+    "@nomicfoundation/hardhat-ignition-ethers": "0.15.5",
     "@nomicfoundation/hardhat-toolbox": "5.0.0"
   },
   "description": "Collection of contracts and presets",
@@ -21,10 +21,10 @@
     "@typechain/hardhat": "9.1.0",
     "@types/chai": "4.3.16",
     "@types/mocha": "10.0.6",
-    "@types/node": "20.14.2",
+    "@types/node": "20.14.7",
     "chai": "4.4.1",
     "dotenv": "16.4.5",
-    "ethers": "6.13.0",
+    "ethers": "6.13.1",
     "hardhat": "2.22.5",
     "hardhat-gas-reporter": "2.2.0",
     "solhint": "4.5.4",
