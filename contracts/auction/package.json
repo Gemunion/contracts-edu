@@ -11,8 +11,8 @@
     "@gemunion/contracts-utils": "5.0.29",
     "@nomicfoundation/hardhat-chai-matchers": "2.0.7",
     "@nomicfoundation/hardhat-ethers": "3.0.6",
-    "@nomicfoundation/hardhat-ignition": "0.15.4",
-    "@nomicfoundation/hardhat-ignition-ethers": "0.15.4",
+    "@nomicfoundation/hardhat-ignition": "0.15.5",
+    "@nomicfoundation/hardhat-ignition-ethers": "0.15.5",
     "@nomicfoundation/hardhat-network-helpers": "1.0.11",
     "@nomicfoundation/hardhat-toolbox": "5.0.0",
     "@nomicfoundation/hardhat-verify": "2.0.8",
@@ -31,9 +31,9 @@
     "@openzeppelin/test-helpers": "0.5.16",
     "@types/chai": "4.3.16",
     "@types/mocha": "10.0.6",
-    "@types/node": "20.14.2",
+    "@types/node": "20.14.7",
     "dotenv": "16.4.5",
-    "ethers": "6.13.0",
+    "ethers": "6.13.1",
     "hardhat": "2.22.5",
     "hardhat-deploy": "0.12.4",
     "solhint": "5.0.1",
@@ -48,7 +48,7 @@
   "main": "./dist/index.js",
   "name": "@gemunion/contracts-examples-auction",
   "peerDependencies": {
-    "ethers": "6.13.0"
+    "ethers": "6.13.1"
   },
   "private": true,
   "publishConfig": {
