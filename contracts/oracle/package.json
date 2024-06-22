@@ -5,8 +5,8 @@
     "url": "https://gemunion.io/"
   },
   "dependencies": {
-    "@gemunion/contracts-access": "5.0.29",
-    "@gemunion/contracts-mocks": "5.0.29",
+    "@gemunion/contracts-access": "5.0.31",
+    "@gemunion/contracts-mocks": "5.0.31",
     "@nomicfoundation/hardhat-chai-matchers": "2.0.7",
     "@nomicfoundation/hardhat-ethers": "3.0.6",
     "@nomicfoundation/hardhat-ignition": "0.15.5",
