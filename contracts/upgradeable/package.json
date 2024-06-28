@@ -24,10 +24,10 @@
   "devDependencies": {
     "@openzeppelin/contracts": "5.0.2",
     "@openzeppelin/contracts-upgradeable": "5.0.2",
-    "@openzeppelin/hardhat-upgrades": "3.1.1",
+    "@openzeppelin/hardhat-upgrades": "3.2.0",
     "@types/chai": "4.3.16",
-    "@types/mocha": "10.0.6",
-    "@types/node": "20.14.7",
+    "@types/mocha": "10.0.7",
+    "@types/node": "20.14.9",
     "dotenv": "16.4.5",
     "ethers": "6.13.1",
     "hardhat": "2.22.5",
