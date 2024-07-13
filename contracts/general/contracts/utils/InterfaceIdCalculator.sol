@@ -6,44 +6,44 @@
 
 pragma solidity ^0.8.0;
 
-import {console} from "hardhat/console.sol";
+import { console } from "hardhat/console.sol";
 
-import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import {IERC20Metadata} from "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol";
+import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import { IERC20Metadata } from "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol";
 
-import {IERC721} from "@openzeppelin/contracts/token/ERC721/IERC721.sol";
-import {IERC721Receiver} from "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol";
-import {IERC721Enumerable} from "@openzeppelin/contracts/token/ERC721/extensions/IERC721Enumerable.sol";
-import {IERC721Metadata} from "@openzeppelin/contracts/token/ERC721/extensions/IERC721Metadata.sol";
+import { IERC721 } from "@openzeppelin/contracts/token/ERC721/IERC721.sol";
+import { IERC721Receiver } from "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol";
+import { IERC721Enumerable } from "@openzeppelin/contracts/token/ERC721/extensions/IERC721Enumerable.sol";
+import { IERC721Metadata } from "@openzeppelin/contracts/token/ERC721/extensions/IERC721Metadata.sol";
 
-import {IERC1155} from "@openzeppelin/contracts/token/ERC1155/IERC1155.sol";
-import {IERC1155Receiver} from "@openzeppelin/contracts/token/ERC1155/IERC1155Receiver.sol";
-import {IERC1155MetadataURI} from "@openzeppelin/contracts/token/ERC1155/extensions/IERC1155MetadataURI.sol";
+import { IERC1155 } from "@openzeppelin/contracts/token/ERC1155/IERC1155.sol";
+import { IERC1155Receiver } from "@openzeppelin/contracts/token/ERC1155/IERC1155Receiver.sol";
+import { IERC1155MetadataURI } from "@openzeppelin/contracts/token/ERC1155/extensions/IERC1155MetadataURI.sol";
 
-import {IAccessControl} from "@openzeppelin/contracts/access/IAccessControl.sol";
-import {IAccessControlEnumerable} from "@openzeppelin/contracts/access/extensions/IAccessControlEnumerable.sol";
-import {IAccessControlDefaultAdminRules} from "@openzeppelin/contracts/access/extensions/IAccessControlDefaultAdminRules.sol";
+import { IAccessControl } from "@openzeppelin/contracts/access/IAccessControl.sol";
+import { IAccessControlEnumerable } from "@openzeppelin/contracts/access/extensions/IAccessControlEnumerable.sol";
+import { IAccessControlDefaultAdminRules } from "@openzeppelin/contracts/access/extensions/IAccessControlDefaultAdminRules.sol";
 
-import {IERC165} from "@openzeppelin/contracts/utils/introspection/IERC165.sol";
+import { IERC165 } from "@openzeppelin/contracts/utils/introspection/IERC165.sol";
 
-import {IERC2981} from "@openzeppelin/contracts/interfaces/IERC2981.sol";
-import {IERC2309} from "@openzeppelin/contracts/interfaces/IERC2309.sol";
-import {IERC5267} from "@openzeppelin/contracts/interfaces/IERC5267.sol";
-import {IERC5805} from "@openzeppelin/contracts/interfaces/IERC5805.sol";
-import {IERC6372} from "@openzeppelin/contracts/interfaces/IERC6372.sol";
-import {IERC20Errors, IERC721Errors, IERC1155Errors} from  "@openzeppelin/contracts/interfaces/draft-IERC6093.sol";
+import { IERC2981 } from "@openzeppelin/contracts/interfaces/IERC2981.sol";
+import { IERC2309 } from "@openzeppelin/contracts/interfaces/IERC2309.sol";
+import { IERC5267 } from "@openzeppelin/contracts/interfaces/IERC5267.sol";
+import { IERC5805 } from "@openzeppelin/contracts/interfaces/IERC5805.sol";
+import { IERC6372 } from "@openzeppelin/contracts/interfaces/IERC6372.sol";
+import { IERC20Errors, IERC721Errors, IERC1155Errors } from  "@openzeppelin/contracts/interfaces/draft-IERC6093.sol";
 
-import {IGovernor} from "@openzeppelin/contracts/governance/IGovernor.sol";
-import {IVotes} from "@openzeppelin/contracts/governance/utils/IVotes.sol";
+import { IGovernor } from "@openzeppelin/contracts/governance/IGovernor.sol";
+import { IVotes } from "@openzeppelin/contracts/governance/utils/IVotes.sol";
 
-import {IERC1363} from "@gemunion/contracts-erc1363/contracts/interfaces/IERC1363.sol";
-import {IERC1363Receiver} from "@gemunion/contracts-erc1363/contracts/interfaces/IERC1363Receiver.sol";
+import { IERC1363 } from "@gemunion/contracts-erc1363/contracts/interfaces/IERC1363.sol";
+import { IERC1363Receiver } from "@gemunion/contracts-erc1363/contracts/interfaces/IERC1363Receiver.sol";
 
-import {IERC4906} from "@gemunion/contracts-erc721/contracts/interfaces/IERC4906.sol";
-import {IERC4907} from "@gemunion/contracts-erc721/contracts/interfaces/IERC4907.sol";
+import { IERC4906 } from "@gemunion/contracts-erc721/contracts/interfaces/IERC4906.sol";
+import { IERC4907 } from "@gemunion/contracts-erc721/contracts/interfaces/IERC4907.sol";
 
-import {IBlackList} from "../interfaces/IBlackList.sol";
-import {IWhiteList} from "../interfaces/IWhiteList.sol";
+import { IBlackList } from "../interfaces/IBlackList.sol";
+import { IWhiteList } from "../interfaces/IWhiteList.sol";
 
 contract InterfaceIdCalculator {
   constructor() {

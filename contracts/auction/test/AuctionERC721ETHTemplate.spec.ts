@@ -123,9 +123,7 @@ describe("AuctionERC721ETHTemplate", function () {
       const [_owner, receiver] = await ethers.getSigners();
       const { templateInstance } = await factory();
 
-      const bidMultiplier = BigInt(Math.floor(Math.random() * 10));
-
-      const tx = templateInstance.connect(receiver).makeBid({ value: amount + bidMultiplier });
+      const tx = templateInstance.connect(receiver).makeBid({ value: amount * 2n - 1n });
       await expect(tx).to.be.revertedWith("Auction: bid must be a multiple of the bid step");
     });
   });

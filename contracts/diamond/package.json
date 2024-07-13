@@ -1,0 +1,73 @@
+{
+  "author": {
+    "email": "trejgun@gemunion.com",
+    "name": "TrejGun",
+    "url": "https://gemunion.io/"
+  },
+  "dependencies": {
+    "@gemunion/contracts-constants": "5.0.34",
+    "@gemunion/contracts-erc721": "5.0.34",
+    "@gemunion/contracts-access": "5.0.34",
+    "@gemunion/contracts-utils": "5.0.34",
+    "@nomicfoundation/hardhat-chai-matchers": "2.0.7",
+    "@nomicfoundation/hardhat-ethers": "3.0.6",
+    "@nomicfoundation/hardhat-ignition": "0.15.5",
+    "@nomicfoundation/hardhat-ignition-ethers": "0.15.5",
+    "@nomicfoundation/hardhat-network-helpers": "1.0.11",
+    "@nomicfoundation/hardhat-toolbox": "5.0.0",
+    "@nomicfoundation/hardhat-verify": "2.0.8",
+    "@nomiclabs/hardhat-ethers": "2.2.3",
+    "@typechain/ethers-v6": "0.5.1",
+    "@typechain/hardhat": "9.1.0",
+    "chai": "4.4.1",
+    "hardhat-gas-reporter": "2.2.0",
+    "solidity-coverage": "0.8.12",
+    "typechain": "8.3.2"
+  },
+  "description": "Collection of contracts and presets",
+  "devDependencies": {
+    "@nomiclabs/hardhat-web3": "2.0.0",
+    "@openzeppelin/test-helpers": "0.5.16",
+    "@types/chai": "4.3.16",
+    "@types/mocha": "10.0.6",
+    "@types/node": "20.14.7",
+    "dotenv": "16.4.5",
+    "ethers": "6.13.1",
+    "hardhat": "2.22.5",
+    "hardhat-deploy": "0.12.4",
+    "solhint": "5.0.1",
+    "solhint-plugin-prettier": "0.1.0",
+    "ts-node": "10.9.2",
+    "web3": "1.10.4"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "UNLICENSED",
+  "main": "./dist/index.js",
+  "name": "@gemunion/contracts-examples-diamond",
+  "peerDependencies": {
+    "ethers": "6.13.1"
+  },
+  "private": true,
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gemunion/contracts"
+  },
+  "scripts": {
+    "build": "hardhat compile",
+    "clean": "hardhat clean",
+    "deploy": "hardhat deploy",
+    "lint": "eslint . --fix",
+    "prebuild": "hardhat clean",
+    "preversion": "npm run build",
+    "solhint": "solhint -f table contracts/**/*.sol contracts/**/**/*.sol",
+    "test": "hardhat test",
+    "test:coverage": "hardhat coverage"
+  },
+  "types": "./typechain-types/index.ts",
+  "version": "2.0.0"
+}

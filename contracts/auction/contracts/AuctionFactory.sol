@@ -6,11 +6,11 @@
 
 pragma solidity ^0.8.20;
 
-import {IERC721} from "@openzeppelin/contracts/token/ERC721/IERC721.sol";
-import {AccessControl} from "@openzeppelin/contracts/access/AccessControl.sol";
-import {Pausable} from "@openzeppelin/contracts/utils/Pausable.sol";
+import { IERC721 } from "@openzeppelin/contracts/token/ERC721/IERC721.sol";
+import { AccessControl } from "@openzeppelin/contracts/access/AccessControl.sol";
+import { Pausable } from "@openzeppelin/contracts/utils/Pausable.sol";
 
-import {AuctionERC721ETHTemplate} from "./AuctionERC721ETHTemplate.sol";
+import { AuctionERC721ETHTemplate } from "./AuctionERC721ETHTemplate.sol";
 
 contract AuctionFactory is AccessControl, Pausable {
   bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");

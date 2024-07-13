@@ -6,13 +6,13 @@
 
 pragma solidity ^0.8.20;
 
-import {Address} from "@openzeppelin/contracts/utils/Address.sol";
-import {Pausable} from "@openzeppelin/contracts/utils/Pausable.sol";
-import {EIP712} from "@openzeppelin/contracts/utils/cryptography/EIP712.sol";
-import {SignatureChecker} from "@openzeppelin/contracts/utils/cryptography/SignatureChecker.sol";
-import {AccessControl} from "@openzeppelin/contracts/access/AccessControl.sol";
+import { Address } from "@openzeppelin/contracts/utils/Address.sol";
+import { Pausable } from "@openzeppelin/contracts/utils/Pausable.sol";
+import { EIP712 } from "@openzeppelin/contracts/utils/cryptography/EIP712.sol";
+import { SignatureChecker } from "@openzeppelin/contracts/utils/cryptography/SignatureChecker.sol";
+import { AccessControl } from "@openzeppelin/contracts/access/AccessControl.sol";
 
-import {IERC721Mintable} from "../interfaces/IERC721Mintable.sol";
+import { IERC721Mintable } from "../interfaces/IERC721Mintable.sol";
 
 contract EIP712ERC721 is EIP712, Pausable, AccessControl {
   using Address for address;

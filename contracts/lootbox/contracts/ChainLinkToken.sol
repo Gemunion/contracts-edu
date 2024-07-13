@@ -6,11 +6,11 @@
 
 pragma solidity ^0.8.20;
 
-import {ChainLinkHardhat} from "@gemunion/contracts-chain-link/contracts/extensions/ChainLinkHardhat.sol";
-import {ERC721ABEC} from "@gemunion/contracts-erc721e/contracts/preset/ERC721ABEC.sol";
-import {MINTER_ROLE} from "@gemunion/contracts-utils/contracts/roles.sol";
+import { ChainLinkHardhat } from "@gemunion/contracts-chain-link/contracts/extensions/ChainLinkHardhat.sol";
+import { ERC721ABEC } from "@gemunion/contracts-erc721e/contracts/preset/ERC721ABEC.sol";
+import { MINTER_ROLE } from "@gemunion/contracts-utils/contracts/roles.sol";
 
-import {IERC721ChainLink} from "./interfaces/IERC721ChainLink.sol";
+import { IERC721ChainLink } from "./interfaces/IERC721ChainLink.sol";
 
 contract ChainLinkTokenMock is ChainLinkHardhat, IERC721ChainLink, ERC721ABEC {
   // tokenId => rarity

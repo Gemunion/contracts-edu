@@ -6,9 +6,9 @@
 
 pragma solidity ^0.8.0;
 
-import {console} from "hardhat/console.sol";
+import { console } from "hardhat/console.sol";
 
-import {Strings} from "@openzeppelin/contracts/utils/Strings.sol";
+import { Strings } from "@openzeppelin/contracts/utils/Strings.sol";
 
 contract TokenIdCalculator {
   constructor() {

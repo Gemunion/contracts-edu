@@ -10,7 +10,7 @@ import { ERC721, IERC721 } from "@openzeppelin/contracts/token/ERC721/ERC721.sol
 import {
   AccessControl,
   AccessControlEnumerable
-} from "@openzeppelin/contracts/access/extensions/AccessControlEnumerable.sol";
+ } from "@openzeppelin/contracts/access/extensions/AccessControlEnumerable.sol";
 import { Address } from "@openzeppelin/contracts/utils/Address.sol";
 
 import { ERC721ABERS } from "@gemunion/contracts-erc721e/contracts/preset/ERC721ABERS.sol";

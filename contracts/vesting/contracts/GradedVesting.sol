@@ -6,7 +6,7 @@
 
 pragma solidity ^0.8.20;
 
-import {AbstractVesting} from "./AbstractVesting.sol";
+import { AbstractVesting } from "./AbstractVesting.sol";
 
 contract GradedVesting is AbstractVesting {
   constructor(

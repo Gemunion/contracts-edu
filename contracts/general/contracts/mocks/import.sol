@@ -6,6 +6,6 @@
 
 pragma solidity ^0.8.20;
 
-import {ERC20AB} from "@gemunion/contracts-erc20/contracts/preset/ERC20AB.sol";
-import {ERC721AB} from "@gemunion/contracts-erc721/contracts/preset/ERC721AB.sol";
-import {ERC1155AB} from "@gemunion/contracts-erc1155/contracts/preset/ERC1155AB.sol";
+import { ERC20AB } from "@gemunion/contracts-erc20/contracts/preset/ERC20AB.sol";
+import { ERC721AB } from "@gemunion/contracts-erc721/contracts/preset/ERC721AB.sol";
+import { ERC1155AB } from "@gemunion/contracts-erc1155/contracts/preset/ERC1155AB.sol";

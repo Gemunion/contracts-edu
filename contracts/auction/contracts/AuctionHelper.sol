@@ -6,8 +6,8 @@
 
 pragma solidity ^0.8.20;
 
-import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
-import {ERC721Holder} from "@openzeppelin/contracts/token/ERC721/utils/ERC721Holder.sol";
+import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
+import { ERC721Holder } from "@openzeppelin/contracts/token/ERC721/utils/ERC721Holder.sol";
 
 abstract contract AuctionHelper is Ownable, ERC721Holder {
   address _collection;

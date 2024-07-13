@@ -6,7 +6,7 @@
 
 pragma solidity ^0.8.20;
 
-import {console} from "hardhat/console.sol";
+import { console } from "hardhat/console.sol";
 
 contract Dispersion {
   function getDispersion(uint256 randomness) external pure virtual returns (uint256) {

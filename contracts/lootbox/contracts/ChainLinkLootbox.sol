@@ -6,12 +6,12 @@
 
 pragma solidity ^0.8.20;
 
-import {Address} from "@openzeppelin/contracts/utils/Address.sol";
-import {Pausable} from "@openzeppelin/contracts/utils/Pausable.sol";
+import { Address } from "@openzeppelin/contracts/utils/Address.sol";
+import { Pausable } from "@openzeppelin/contracts/utils/Pausable.sol";
 
-import {ERC721ABEC} from "@gemunion/contracts-erc721e/contracts/preset/ERC721ABEC.sol";
+import { ERC721ABEC } from "@gemunion/contracts-erc721e/contracts/preset/ERC721ABEC.sol";
 
-import {IERC721ChainLink} from "./interfaces/IERC721ChainLink.sol";
+import { IERC721ChainLink } from "./interfaces/IERC721ChainLink.sol";
 
 contract ChainLinkLootboxMock is ERC721ABEC, Pausable {
   using Address for address;
