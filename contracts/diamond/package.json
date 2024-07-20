@@ -30,7 +30,7 @@
     "@openzeppelin/test-helpers": "0.5.16",
     "@types/chai": "4.3.16",
     "@types/mocha": "10.0.7",
-    "@types/node": "20.14.10",
+    "@types/node": "20.14.11",
     "dotenv": "16.4.5",
     "ethers": "6.13.1",
     "hardhat": "2.22.6",
