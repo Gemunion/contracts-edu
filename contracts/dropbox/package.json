@@ -21,25 +21,25 @@
     "@nomiclabs/hardhat-ethers": "2.2.3",
     "@typechain/ethers-v6": "0.5.1",
     "@typechain/hardhat": "9.1.0",
-    "chai": "4.4.1",
+    "chai": "4.5.0",
     "hardhat-gas-reporter": "2.2.0",
     "solidity-coverage": "0.8.12",
     "typechain": "8.3.2"
   },
   "description": "Collection of contracts and presets",
   "devDependencies": {
-    "@chainlink/contracts": "1.1.1",
+    "@chainlink/contracts": "1.2.0",
     "@nomiclabs/hardhat-web3": "2.0.0",
     "@openzeppelin/contracts": "5.0.2",
     "@openzeppelin/test-helpers": "0.5.16",
     "@types/chai": "4.3.16",
     "@types/mocha": "10.0.7",
-    "@types/node": "20.14.11",
+    "@types/node": "20.14.12",
     "dotenv": "16.4.5",
-    "ethers": "6.13.1",
+    "ethers": "6.13.2",
     "hardhat": "2.22.6",
     "hardhat-deploy": "0.12.4",
-    "solhint": "5.0.1",
+    "solhint": "5.0.2",
     "solhint-plugin-prettier": "0.1.0",
     "ts-node": "10.9.2",
     "web3": "1.10.4"
@@ -52,7 +52,7 @@
   "name": "@gemunion/contracts-examples-dropbox",
   "peerDependencies": {
     "@openzeppelin/contracts": "5.0.2",
-    "ethers": "6.13.1"
+    "ethers": "6.13.2"
   },
   "private": true,
   "publishConfig": {
