@@ -7,19 +7,19 @@
   "dependencies": {
     "@lerna/legacy-package-management": "8.1.7",
     "lerna": "8.1.7",
-    "nx": "19.5.3"
+    "nx": "19.5.6"
   },
   "devDependencies": {
     "@gemunion/eslint-config": "4.0.6",
-    "@types/node": "20.14.12",
-    "@typescript-eslint/eslint-plugin": "7.17.0",
-    "@typescript-eslint/parser": "7.17.0",
+    "@types/node": "20.14.14",
+    "@typescript-eslint/eslint-plugin": "7.18.0",
+    "@typescript-eslint/parser": "7.18.0",
     "eslint": "8.57.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-config-standard": "17.1.0",
     "eslint-import-resolver-typescript": "3.6.1",
     "eslint-plugin-import": "2.29.1",
-    "eslint-plugin-mocha": "10.4.3",
+    "eslint-plugin-mocha": "10.5.0",
     "eslint-plugin-n": "16.6.2",
     "eslint-plugin-prettier": "5.2.1",
     "eslint-plugin-promise": "6.6.0",
