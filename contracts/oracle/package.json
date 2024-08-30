@@ -19,15 +19,15 @@
     "@typechain/hardhat": "9.1.0",
     "chai": "4.5.0",
     "hardhat-gas-reporter": "2.2.1",
-    "solidity-coverage": "0.8.12",
+    "solidity-coverage": "0.8.13",
     "typechain": "8.3.2"
   },
   "description": "Collection of contracts and presets",
   "devDependencies": {
     "@openzeppelin/contracts": "5.0.2",
-    "@types/chai": "4.3.17",
+    "@types/chai": "4.3.19",
     "@types/mocha": "10.0.7",
-    "@types/node": "20.16.1",
+    "@types/node": "20.16.2",
     "dotenv": "16.4.5",
     "ethers": "6.13.2",
     "hardhat": "2.22.9",
