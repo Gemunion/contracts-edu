@@ -1,35 +1,33 @@
 import "@nomiclabs/hardhat-ethers";
 import { ethers } from "hardhat";
-import { BigNumber, utils } from "ethers";
+import { randomBytes, hexlify } from "ethers";
 
-import { mapSeries } from "@ethberry/utils";
+import { mapSeries } from "./map-series";
 
 async function main() {
   const contract = await ethers.getContractFactory("Dispersion");
 
   const dispersionInstance = await contract.deploy();
 
-  const result = await mapSeries<BigNumber>(
+  const result = await mapSeries(
     new Array(1e4).fill(null).map(() => {
-      return (): any => dispersionInstance.getDispersion(BigNumber.from(utils.randomBytes(32)));
+      return () => dispersionInstance.getDispersion(BigInt(hexlify(randomBytes(32))));
     }),
   );
 
-  const dispersion = result.reduce((memo, e) => {
-    const index = e.toString();
-    if (!memo[index]) {
-      memo[index] = 0;
-    }
-    memo[index]++;
-    return memo;
-  }, {} as Record<string, number>);
+  const dispersion = result.reduce(
+    (memo, e) => {
+      const index = e.toString();
+      if (!memo[index]) {
+        memo[index] = 0;
+      }
+      memo[index]++;
+      return memo;
+    },
+    {} as Record<string, number>,
+  );
 
   console.info(dispersion);
 }
 
-main()
-  .then(() => process.exit(0))
-  .catch(error => {
-    console.error(error);
-    process.exit(1);
-  });
+main().then(console.info).catch(console.error);

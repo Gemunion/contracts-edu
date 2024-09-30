@@ -3,7 +3,7 @@ import { ethers } from "hardhat";
 import { ZeroAddress } from "ethers";
 
 import { amount, tokenId } from "@ethberry/contracts-constants";
-import { deployContract, deployJerk, deployWallet } from "@ethberry/contracts-mocks";
+import { deployContract } from "@ethberry/contracts-utils";
 import { shouldSupportsInterface } from "@ethberry/contracts-utils";
 
 import { checkIfInLogs } from "./shared/utils";
@@ -48,10 +48,8 @@ describe("Dispenser", function () {
       const tx = contractInstance.disperseEther([await attackerInstance.getAddress()], [amount], {
         value: amount * 2n,
       });
-      await expect(tx)
-        .to.changeEtherBalances([await attackerInstance.getAddress()], [amount])
-        .to.emit(attackerInstance, "Reentered")
-        .withArgs(false);
+      await expect(tx).to.emit(attackerInstance, "Reentered").withArgs(false);
+      await expect(tx).to.changeEtherBalances([await attackerInstance.getAddress()], [amount]);
     });
 
     it("should transfer ether to AOE", async function () {
@@ -64,7 +62,7 @@ describe("Dispenser", function () {
     });
 
     it("should not transfer to non receiver", async function () {
-      const contractNonReceiverInstance = await deployJerk();
+      const contractNonReceiverInstance = await deployContract("NativeRejectorMock");
 
       const contractInstance = await factory();
 
@@ -80,7 +78,7 @@ describe("Dispenser", function () {
 
     it("should transfer to contract receiver", async function () {
       const [owner, receiver] = await ethers.getSigners();
-      const contractNonReceiverInstance = await deployJerk();
+      const contractNonReceiverInstance = await deployContract("NativeRejectorMock");
 
       const contractInstance = await factory();
 
@@ -89,15 +87,13 @@ describe("Dispenser", function () {
         [amount, amount],
         { value: amount * 2n },
       );
-      await expect(tx)
-        .to.emit(contractInstance, "TransferETH")
-        .withArgs(receiver.address, amount)
-        .to.changeEtherBalances([owner.address, receiver.address], [-amount, amount]);
+      await expect(tx).to.emit(contractInstance, "TransferETH").withArgs(receiver.address, amount);
+      await expect(tx).to.changeEtherBalances([owner.address, receiver.address], [-amount, amount]);
     });
 
     it("should return back remaining ether", async function () {
       const [owner, receiver] = await ethers.getSigners();
-      const contractNonReceiverInstance = await deployJerk();
+      const contractNonReceiverInstance = await deployContract("NativeRejectorMock");
 
       const contractInstance = await factory();
 
@@ -106,10 +102,8 @@ describe("Dispenser", function () {
         [amount, amount],
         { value: amount * 5n },
       );
-      await expect(tx)
-        .to.changeEtherBalances([owner.address, receiver.address], [-amount, amount])
-        .to.emit(contractInstance, "TransferETH")
-        .withArgs(receiver.address, amount);
+      await expect(tx).to.emit(contractInstance, "TransferETH").withArgs(receiver.address, amount);
+      await expect(tx).to.changeEtherBalances([owner.address, receiver.address], [-amount, amount]);
 
       const findLog = await checkIfInLogs(tx, contractInstance, "TransferETH", [
         await contractNonReceiverInstance.getAddress(),
@@ -153,7 +147,7 @@ describe("Dispenser", function () {
     it("should transfer to non Receiver", async function () {
       const [owner] = await ethers.getSigners();
       const contractInstance = await factory();
-      const contractNonReceiver = await deployJerk();
+      const contractNonReceiver = await deployContract("NativeRejectorMock");
       const erc20Instance = await deployERC20();
 
       await erc20Instance.mint(owner.address, amount);
@@ -175,7 +169,7 @@ describe("Dispenser", function () {
     it("should transfer to Receiver", async function () {
       const [owner] = await ethers.getSigners();
       const contractInstance = await factory();
-      const contractReceiver = await deployWallet();
+      const contractReceiver = await deployContract("AllTypesHolderMock");
       const erc20Instance = await deployERC20();
 
       await erc20Instance.mint(owner.address, amount);
@@ -222,7 +216,7 @@ describe("Dispenser", function () {
     it("should not transfer to non receiver", async function () {
       const [owner] = await ethers.getSigners();
       const contractInstance = await factory();
-      const contractNonReceiver = await deployJerk();
+      const contractNonReceiver = await deployContract("NativeRejectorMock");
       const erc721Instance = await deployERC721();
 
       await erc721Instance.mint(owner.address, tokenId);
@@ -245,7 +239,7 @@ describe("Dispenser", function () {
     it("should transfer to receiver", async function () {
       const [owner] = await ethers.getSigners();
       const contractInstance = await factory();
-      const contractReceiver = await deployWallet();
+      const contractReceiver = await deployContract("AllTypesHolderMock");
       const erc721Instance = await deployERC721();
 
       await erc721Instance.mint(owner.address, tokenId);
@@ -327,7 +321,7 @@ describe("Dispenser", function () {
     it("should not transfer to non receiver", async function () {
       const [owner] = await ethers.getSigners();
       const contractInstance = await factory();
-      const contractNonReceiver = await deployJerk();
+      const contractNonReceiver = await deployContract("NativeRejectorMock");
       const erc1155Instance = await deployERC1155();
 
       await erc1155Instance.mint(owner.address, tokenId, amount, "0x");
@@ -354,7 +348,7 @@ describe("Dispenser", function () {
     it("should transfer to receiver", async function () {
       const [owner] = await ethers.getSigners();
       const contractInstance = await factory();
-      const contractReceiver = await deployWallet();
+      const contractReceiver = await deployContract("AllTypesHolderMock");
       const erc1155Instance = await deployERC1155();
 
       await erc1155Instance.mint(owner.address, tokenId, amount, "0x");

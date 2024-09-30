@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 
 // Author: TrejGun
-// Email: trejgun@gemunion.io
+// Email: trejgun+opensource@gmail.com
 // Website: https://ethberry.io/
 
 pragma solidity ^0.8.20;
@@ -12,7 +12,7 @@ import {  SafeERC20 } from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.
 import {  IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import {  ERC165 } from "@openzeppelin/contracts/utils/introspection/ERC165.sol";
 
-import {  CoinWallet, NativeWallet } from "@ethberry/contracts-mocks/contracts/Wallet.sol";
+import { CoinHolder, NativeRejector } from "@ethberry/contracts-finance/contracts/HolderMocks.sol";
 
 /**
  * @title Daily Vesting
@@ -22,7 +22,7 @@ import {  CoinWallet, NativeWallet } from "@ethberry/contracts-mocks/contracts/W
  *      - TopUp (Gemunion)
  *      This contract abstracts all common functions and is used as an foundation for other vesting contracts
  */
-contract DailyVesting is VestingWallet, CoinWallet {
+contract DailyVesting is VestingWallet, CoinHolder, NativeRejector {
 	using SafeCast for uint256;
 	using SafeERC20 for IERC20;
 
@@ -62,7 +62,7 @@ contract DailyVesting is VestingWallet, CoinWallet {
 	/**
 	 * @dev Restrict the contract to receive Ether (receive via topUp function only).
    */
-	receive() external payable override(VestingWallet, NativeWallet) {
+	receive() external payable override(VestingWallet, NativeRejector) {
 		revert();
 	}
 

@@ -1,9 +1,10 @@
 // SPDX-License-Identifier: UNLICENSED
 
 // Author: TrejGun
-// Email: trejgun@gemunion.io
+// Email: trejgun+opensource@gmail.com
 // Website: https://ethberry.io/
 
 pragma solidity ^0.8.20;
 
-import { Jerk } from "@ethberry/contracts-mocks/contracts/Jerk.sol";
+import { NativeRejectorMock } from "@ethberry/contracts-finance/contracts/HolderMocks.sol";
+

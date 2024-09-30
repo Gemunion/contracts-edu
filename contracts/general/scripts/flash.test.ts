@@ -12,9 +12,4 @@ async function main() {
   await erc20Instance.flashLoan(erc20FlashBorrowerInstance.address, await erc20Instance.getAddress(), amount, "0x");
 }
 
-main()
-  .then(() => process.exit(0))
-  .catch(error => {
-    console.error(error);
-    process.exit(1);
-  });
+main().then(console.info).catch(console.error);
