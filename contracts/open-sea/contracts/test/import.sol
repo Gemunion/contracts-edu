@@ -2,9 +2,9 @@
 
 // Author: TrejGun
 // Email: trejgun@gemunion.io
-// Website: https://gemunion.io/
+// Website: https://ethberry.io/
 
 pragma solidity ^0.8.20;
 
-import { AllTypesWallet } from "@gemunion/contracts-mocks/contracts/Wallet.sol";
-import { Jerk } from "@gemunion/contracts-mocks/contracts/Jerk.sol";
+import { AllTypesWallet } from "@ethberry/contracts-mocks/contracts/Wallet.sol";
+import { Jerk } from "@ethberry/contracts-mocks/contracts/Jerk.sol";

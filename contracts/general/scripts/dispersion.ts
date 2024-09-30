@@ -2,7 +2,7 @@ import "@nomiclabs/hardhat-ethers";
 import { ethers } from "hardhat";
 import { BigNumber, utils } from "ethers";
 
-import { mapSeries } from "@gemunion/utils";
+import { mapSeries } from "@ethberry/utils";
 
 async function main() {
   const contract = await ethers.getContractFactory("Dispersion");

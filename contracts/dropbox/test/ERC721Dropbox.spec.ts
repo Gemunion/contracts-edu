@@ -10,14 +10,14 @@ import {
   tokenId,
   tokenMaxAmount,
   tokenName,
-} from "@gemunion/contracts-constants";
-import { shouldBehaveLikeAccessControl } from "@gemunion/contracts-access";
-import { shouldSupportsInterface } from "@gemunion/contracts-utils";
+} from "@ethberry/contracts-constants";
+import { shouldBehaveLikeAccessControl } from "@ethberry/contracts-access";
+import { shouldSupportsInterface } from "@ethberry/contracts-utils";
 import {
   shouldBehaveLikeERC721,
   shouldBehaveLikeERC721Burnable,
   shouldBehaveLikeERC721Royalty,
-} from "@gemunion/contracts-erc721";
+} from "@ethberry/contracts-erc721";
 
 import { deployERC721 } from "./shared/fixtures";
 

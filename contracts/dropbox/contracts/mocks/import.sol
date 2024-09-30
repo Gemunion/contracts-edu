@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: MIT
 
 // Author: TrejGun
-// Email: trejgun+gemunion@gmail.com
-// Website: https://gemunion.io/
+// Email: trejgun+opensource@gmail.com
+// Website: https://ethberry.io/
 
 pragma solidity ^0.8.20;
 
-import { AllTypesWallet } from "@gemunion/contracts-mocks/contracts/Wallet.sol";
-import { Jerk } from "@gemunion/contracts-mocks/contracts/Jerk.sol";
+import { AllTypesWallet } from "@ethberry/contracts-mocks/contracts/Wallet.sol";
+import { Jerk } from "@ethberry/contracts-mocks/contracts/Jerk.sol";
 

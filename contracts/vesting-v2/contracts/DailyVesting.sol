@@ -2,7 +2,7 @@
 
 // Author: TrejGun
 // Email: trejgun@gemunion.io
-// Website: https://gemunion.io/
+// Website: https://ethberry.io/
 
 pragma solidity ^0.8.20;
 
@@ -12,7 +12,7 @@ import {  SafeERC20 } from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.
 import {  IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import {  ERC165 } from "@openzeppelin/contracts/utils/introspection/ERC165.sol";
 
-import {  CoinWallet, NativeWallet } from "@gemunion/contracts-mocks/contracts/Wallet.sol";
+import {  CoinWallet, NativeWallet } from "@ethberry/contracts-mocks/contracts/Wallet.sol";
 
 /**
  * @title Daily Vesting

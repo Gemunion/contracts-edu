@@ -2,14 +2,14 @@
 
 // Author: TrejGun
 // Email: trejgun@gemunion.io
-// Website: https://gemunion.io/
+// Website: https://ethberry.io/
 
 pragma solidity ^0.8.20;
 
 import { ERC721 } from  "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
-import { MINTER_ROLE } from "@gemunion/contracts-utils/contracts/roles.sol";
-import { ERC721ABCRS } from "@gemunion/contracts-erc721/contracts/preset/ERC721ABCRS.sol";
+import { MINTER_ROLE } from "@ethberry/contracts-utils/contracts/roles.sol";
+import { ERC721ABCRS } from "@ethberry/contracts-erc721/contracts/preset/ERC721ABCRS.sol";
 
 import { ERC721Dropbox } from "../ERC721Dropbox.sol";
 

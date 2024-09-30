@@ -1,7 +1,7 @@
 import { ethers } from "hardhat";
 import { time } from "@openzeppelin/test-helpers";
 
-import { amount, span, tokenName, tokenSymbol } from "@gemunion/contracts-constants";
+import { amount, span, tokenName, tokenSymbol } from "@ethberry/contracts-constants";
 
 export async function deployVesting(name: string): Promise<any> {
   const [owner] = await ethers.getSigners();

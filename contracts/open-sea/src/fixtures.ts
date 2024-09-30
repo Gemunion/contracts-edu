@@ -1,7 +1,7 @@
 import { ethers } from "hardhat";
 import { Contract } from "ethers";
 
-import { royalty, tokenName, tokenSymbol } from "@gemunion/contracts-constants";
+import { royalty, tokenName, tokenSymbol } from "@ethberry/contracts-constants";
 
 export async function deployERC721<T extends Contract>(name: string): Promise<T> {
   const factory = await ethers.getContractFactory(name);

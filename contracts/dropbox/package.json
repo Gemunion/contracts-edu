@@ -1,45 +1,45 @@
 {
   "author": {
-    "email": "trejgun@gemunion.com",
+    "email": "trejgun+opensource@gmail.com",
     "name": "TrejGun",
-    "url": "https://gemunion.io/"
+    "url": "https://ethberry.io/"
   },
   "dependencies": {
-    "@gemunion/contracts-access": "5.0.47",
-    "@gemunion/contracts-chain-link": "5.0.47",
-    "@gemunion/contracts-constants": "5.0.47",
-    "@gemunion/contracts-erc721": "5.0.47",
-    "@gemunion/contracts-mocks": "5.0.47",
-    "@gemunion/contracts-utils": "5.0.47",
-    "@nomicfoundation/hardhat-chai-matchers": "2.0.8",
-    "@nomicfoundation/hardhat-ethers": "3.0.8",
+    "@ethberry/contracts-access": "5.0.34",
+    "@ethberry/contracts-chain-link": "5.0.34",
+    "@ethberry/contracts-constants": "5.0.34",
+    "@ethberry/contracts-erc721": "5.0.34",
+    "@ethberry/contracts-mocks": "5.0.34",
+    "@ethberry/contracts-utils": "5.0.34",
+    "@nomicfoundation/hardhat-chai-matchers": "2.0.7",
+    "@nomicfoundation/hardhat-ethers": "3.0.6",
     "@nomicfoundation/hardhat-ignition": "0.15.5",
     "@nomicfoundation/hardhat-ignition-ethers": "0.15.5",
-    "@nomicfoundation/hardhat-network-helpers": "1.0.12",
+    "@nomicfoundation/hardhat-network-helpers": "1.0.11",
     "@nomicfoundation/hardhat-toolbox": "5.0.0",
-    "@nomicfoundation/hardhat-verify": "2.0.11",
+    "@nomicfoundation/hardhat-verify": "2.0.8",
     "@nomiclabs/hardhat-ethers": "2.2.3",
     "@typechain/ethers-v6": "0.5.1",
     "@typechain/hardhat": "9.1.0",
-    "chai": "4.5.0",
-    "hardhat-gas-reporter": "2.2.1",
-    "solidity-coverage": "0.8.13",
+    "chai": "4.4.1",
+    "hardhat-gas-reporter": "2.2.0",
+    "solidity-coverage": "0.8.12",
     "typechain": "8.3.2"
   },
   "description": "Collection of contracts and presets",
   "devDependencies": {
-    "@chainlink/contracts": "1.2.0",
+    "@chainlink/contracts": "1.1.1",
     "@nomiclabs/hardhat-web3": "2.0.0",
     "@openzeppelin/contracts": "5.0.2",
     "@openzeppelin/test-helpers": "0.5.16",
-    "@types/chai": "4.3.19",
-    "@types/mocha": "10.0.8",
-    "@types/node": "20.16.5",
+    "@types/chai": "4.3.16",
+    "@types/mocha": "10.0.7",
+    "@types/node": "20.14.10",
     "dotenv": "16.4.5",
-    "ethers": "6.13.2",
-    "hardhat": "2.22.11",
+    "ethers": "6.13.1",
+    "hardhat": "2.22.6",
     "hardhat-deploy": "0.12.4",
-    "solhint": "5.0.3",
+    "solhint": "5.0.1",
     "solhint-plugin-prettier": "0.1.0",
     "ts-node": "10.9.2",
     "web3": "1.10.4"
@@ -49,10 +49,10 @@
   },
   "license": "UNLICENSED",
   "main": "./dist/index.js",
-  "name": "@gemunion/contracts-examples-dropbox",
+  "name": "@ethberry/contracts-examples-dropbox",
   "peerDependencies": {
     "@openzeppelin/contracts": "5.0.2",
-    "ethers": "6.13.2"
+    "ethers": "6.13.1"
   },
   "private": true,
   "publishConfig": {
@@ -60,7 +60,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gemunion/contracts"
+    "url": "https://github.com/ethberry/contracts"
   },
   "scripts": {
     "build": "tsc && hardhat compile",

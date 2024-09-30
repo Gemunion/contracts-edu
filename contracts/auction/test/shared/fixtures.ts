@@ -1,6 +1,6 @@
 import { ethers } from "hardhat";
 
-import { amount, span, tokenId, tokenName, tokenSymbol } from "@gemunion/contracts-constants";
+import { amount, span, tokenId, tokenName, tokenSymbol } from "@ethberry/contracts-constants";
 import { time } from "@openzeppelin/test-helpers";
 
 export async function deployERC721(): Promise<any> {

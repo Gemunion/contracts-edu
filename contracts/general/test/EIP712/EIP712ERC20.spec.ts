@@ -2,7 +2,7 @@ import { expect } from "chai";
 import { ethers } from "hardhat";
 import { ZeroAddress } from "ethers";
 
-import { amount, MINTER_ROLE, nonce, tokenName } from "@gemunion/contracts-constants";
+import { amount, MINTER_ROLE, nonce, tokenName } from "@ethberry/contracts-constants";
 
 import { deployDropbox, deployErc20 } from "./shared/fixtures";
 

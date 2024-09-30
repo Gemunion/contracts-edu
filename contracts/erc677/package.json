@@ -2,7 +2,7 @@
   "author": {
     "email": "trejgun@gemunion.io",
     "name": "TrejGun",
-    "url": "https://gemunion.io/"
+    "url": "https://ethberry.io/"
   },
   "dependencies": {
     "@nomicfoundation/hardhat-ignition": "0.15.5",
@@ -39,7 +39,7 @@
   },
   "license": "UNLICENSED",
   "main": "./dist/index.js",
-  "name": "@gemunion/contracts-erc677",
+  "name": "@ethberry/contracts-erc677",
   "peerDependencies": {
     "@nomicfoundation/hardhat-chai-matchers": "^2.0.0",
     "@nomicfoundation/hardhat-ethers": "^3.0.0",
@@ -60,7 +60,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gemunion/contracts"
+    "url": "https://github.com/ethberry/contracts"
   },
   "scripts": {
     "build": "hardhat compile && tsc",

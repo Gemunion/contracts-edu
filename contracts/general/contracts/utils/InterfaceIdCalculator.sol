@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 
 // Author: TrejGun
-// Email: trejgun+gemunion@gmail.com
-// Website: https://gemunion.io/
+// Email: trejgun+opensource@gmail.com
+// Website: https://ethberry.io/
 
 pragma solidity ^0.8.0;
 
@@ -36,11 +36,11 @@ import { IERC20Errors, IERC721Errors, IERC1155Errors } from  "@openzeppelin/cont
 import { IGovernor } from "@openzeppelin/contracts/governance/IGovernor.sol";
 import { IVotes } from "@openzeppelin/contracts/governance/utils/IVotes.sol";
 
-import { IERC1363 } from "@gemunion/contracts-erc1363/contracts/interfaces/IERC1363.sol";
-import { IERC1363Receiver } from "@gemunion/contracts-erc1363/contracts/interfaces/IERC1363Receiver.sol";
+import { IERC1363 } from "@ethberry/contracts-erc1363/contracts/interfaces/IERC1363.sol";
+import { IERC1363Receiver } from "@ethberry/contracts-erc1363/contracts/interfaces/IERC1363Receiver.sol";
 
-import { IERC4906 } from "@gemunion/contracts-erc721/contracts/interfaces/IERC4906.sol";
-import { IERC4907 } from "@gemunion/contracts-erc721/contracts/interfaces/IERC4907.sol";
+import { IERC4906 } from "@ethberry/contracts-erc721/contracts/interfaces/IERC4906.sol";
+import { IERC4907 } from "@ethberry/contracts-erc721/contracts/interfaces/IERC4907.sol";
 
 import { IBlackList } from "../interfaces/IBlackList.sol";
 import { IWhiteList } from "../interfaces/IWhiteList.sol";

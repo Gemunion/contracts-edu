@@ -2,8 +2,8 @@ import { expect } from "chai";
 import { ethers, web3 } from "hardhat";
 import { time } from "@openzeppelin/test-helpers";
 
-import { amount, span, tokenId } from "@gemunion/contracts-constants";
-import { shouldBehaveLikeOwnable } from "@gemunion/contracts-access";
+import { amount, span, tokenId } from "@ethberry/contracts-constants";
+import { shouldBehaveLikeOwnable } from "@ethberry/contracts-access";
 
 import { deployAuction, deployERC721 } from "./shared/fixtures";
 

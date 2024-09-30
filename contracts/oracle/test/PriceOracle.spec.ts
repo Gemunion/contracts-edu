@@ -1,8 +1,8 @@
 import { expect } from "chai";
 import { ethers } from "hardhat";
 
-import { shouldBehaveLikeOwnable } from "@gemunion/contracts-access";
-import { deployContract } from "@gemunion/contracts-utils";
+import { shouldBehaveLikeOwnable } from "@ethberry/contracts-access";
+import { deployContract } from "@ethberry/contracts-utils";
 
 describe("PriceOracle", function () {
   const factory = (): Promise<any> => deployContract(this.title);

@@ -2,9 +2,9 @@ import { expect } from "chai";
 import { ethers } from "hardhat";
 import { ZeroAddress } from "ethers";
 
-import { amount, tokenId } from "@gemunion/contracts-constants";
-import { deployContract, deployJerk, deployWallet } from "@gemunion/contracts-mocks";
-import { shouldSupportsInterface } from "@gemunion/contracts-utils";
+import { amount, tokenId } from "@ethberry/contracts-constants";
+import { deployContract, deployJerk, deployWallet } from "@ethberry/contracts-mocks";
+import { shouldSupportsInterface } from "@ethberry/contracts-utils";
 
 import { checkIfInLogs } from "./shared/utils";
 import { deployERC20, deployERC721, deployERC1155 } from "./shared/fixture";

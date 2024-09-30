@@ -3,9 +3,9 @@ import { ethers } from "hardhat";
 import { ZeroAddress } from "ethers";
 import { time } from "@openzeppelin/test-helpers";
 
-import { amount, DEFAULT_ADMIN_ROLE, PAUSER_ROLE, span, tokenId } from "@gemunion/contracts-constants";
-import { shouldBehaveLikeAccessControl } from "@gemunion/contracts-access";
-import { shouldBehaveLikePausable } from "@gemunion/contracts-utils";
+import { amount, DEFAULT_ADMIN_ROLE, PAUSER_ROLE, span, tokenId } from "@ethberry/contracts-constants";
+import { shouldBehaveLikeAccessControl } from "@ethberry/contracts-access";
+import { shouldBehaveLikePausable } from "@ethberry/contracts-utils";
 
 import { deployAuctionFactory, deployERC721 } from "./shared/fixtures";
 

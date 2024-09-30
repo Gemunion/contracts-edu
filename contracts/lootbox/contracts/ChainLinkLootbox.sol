@@ -1,15 +1,15 @@
 // SPDX-License-Identifier: MIT
 
 // Author: TrejGun
-// Email: trejgun+gemunion@gmail.com
-// Website: https://gemunion.io/
+// Email: trejgun+opensource@gmail.com
+// Website: https://ethberry.io/
 
 pragma solidity ^0.8.20;
 
 import { Address } from "@openzeppelin/contracts/utils/Address.sol";
 import { Pausable } from "@openzeppelin/contracts/utils/Pausable.sol";
 
-import { ERC721ABEC } from "@gemunion/contracts-erc721e/contracts/preset/ERC721ABEC.sol";
+import { ERC721ABEC } from "@ethberry/contracts-erc721e/contracts/preset/ERC721ABEC.sol";
 
 import { IERC721ChainLink } from "./interfaces/IERC721ChainLink.sol";
 

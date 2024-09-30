@@ -2,14 +2,14 @@
 
 // Author: TrejGun
 // Email: trejgun+permission@gmail.com
-// Website: https://gemunion.io/
+// Website: https://ethberry.io/
 
 pragma solidity ^0.8.2;
 
 import { ERC20 } from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import { AccessControl } from "@openzeppelin/contracts/access/AccessControl.sol";
 
-import { PREDICATE_ROLE } from "@gemunion/contracts-utils/contracts/roles.sol";
+import { PREDICATE_ROLE } from "@ethberry/contracts-utils/contracts/roles.sol";
 
 abstract contract ERC20PolygonParent is ERC20, AccessControl {
   constructor() {

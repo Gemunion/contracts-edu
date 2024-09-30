@@ -3,7 +3,7 @@ import { ethers, network } from "hardhat";
 import { parseEther, WeiPerEther, ZeroAddress } from "ethers";
 import { loadFixture } from "@nomicfoundation/hardhat-network-helpers";
 
-import { MINTER_ROLE, tokenName, tokenSymbol } from "@gemunion/contracts-constants";
+import { MINTER_ROLE, tokenName, tokenSymbol } from "@ethberry/contracts-constants";
 
 import { deployERC721, deployLinkVrfFixture } from "../src";
 import { randomRequest } from "./shared/randomRequest";
