@@ -12,7 +12,7 @@
   "devDependencies": {
     "@ethberry/eslint-config": "5.0.4",
     "@types/node": "20.16.10",
-    "husky": "4.3.8",
+    "husky": "9.1.6",
     "lint-staged": "15.2.10",
     "prettier": "3.3.3",
     "prettier-plugin-solidity": "1.4.1",
@@ -30,12 +30,13 @@
   "scripts": {
     "bootstrap": "lerna bootstrap --concurrency 1 --hoist --ignore-scripts",
     "build": "lerna run build --concurrency 1",
-    "lerna:version": "lerna --version",
+    "clean": "sh scripts/clean.sh",
     "lerna:changed": "lerna changed",
     "lerna:publish": "lerna publish from-package --yes --exact --ignore-scripts",
-    "clean": "sh scripts/clean.sh",
+    "lerna:version": "lerna --version",
     "lint": "lerna run lint --stream",
     "precommit": "lint-staged",
+    "prepare": "husky",
     "test": "sh scripts/test.sh"
   },
   "version": "3.0.0"
