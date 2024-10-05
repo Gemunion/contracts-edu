@@ -32,7 +32,7 @@
     "@types/mocha": "10.0.8",
     "@types/node": "20.16.10",
     "dotenv": "16.4.5",
-    "ethers": "6.13.2",
+    "ethers": "6.13.3",
     "hardhat": "2.22.12",
     "hardhat-deploy": "0.12.4",
     "solhint": "5.0.3",
@@ -47,7 +47,7 @@
   "main": "./dist/index.js",
   "name": "@ethberry/contracts-examples-diamond",
   "peerDependencies": {
-    "ethers": "6.13.2"
+    "ethers": "6.13.3"
   },
   "private": true,
   "publishConfig": {
