@@ -5,11 +5,11 @@
     "url": "https://ethberry.io/"
   },
   "dependencies": {
-    "@ethberry/contracts-access": "5.0.49",
-    "@ethberry/contracts-constants": "5.0.49",
-    "@ethberry/contracts-erc20": "5.0.49",
-    "@ethberry/contracts-mocks": "5.0.49",
-    "@ethberry/contracts-utils": "5.0.49",
+    "@ethberry/contracts-access": "5.0.51",
+    "@ethberry/contracts-constants": "5.0.51",
+    "@ethberry/contracts-erc20": "5.0.51",
+    "@ethberry/contracts-mocks": "5.0.51",
+    "@ethberry/contracts-utils": "5.0.51",
     "@nomicfoundation/hardhat-ignition": "0.15.7",
     "@nomicfoundation/hardhat-ignition-ethers": "0.15.7",
     "@nomicfoundation/hardhat-toolbox": "5.0.0"

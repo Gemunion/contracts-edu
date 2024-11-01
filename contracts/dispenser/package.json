@@ -5,11 +5,11 @@
     "url": "https://ethberry.io/"
   },
   "dependencies": {
-    "@ethberry/contracts-constants": "5.0.49",
-    "@ethberry/contracts-erc1155": "5.0.49",
-    "@ethberry/contracts-erc20": "5.0.49",
-    "@ethberry/contracts-erc721": "5.0.49",
-    "@ethberry/contracts-mocks": "5.0.49",
+    "@ethberry/contracts-constants": "5.0.51",
+    "@ethberry/contracts-erc1155": "5.0.51",
+    "@ethberry/contracts-erc20": "5.0.51",
+    "@ethberry/contracts-erc721": "5.0.51",
+    "@ethberry/contracts-mocks": "5.0.51",
     "@nomicfoundation/hardhat-chai-matchers": "2.0.8",
     "@nomicfoundation/hardhat-ethers": "3.0.8",
     "@nomicfoundation/hardhat-ignition": "0.15.7",
@@ -27,7 +27,7 @@
   },
   "description": "Collection of contracts and presets",
   "devDependencies": {
-    "@ethberry/contracts-utils": "5.0.49",
+    "@ethberry/contracts-utils": "5.0.51",
     "@nomiclabs/hardhat-web3": "2.0.0",
     "@openzeppelin/test-helpers": "0.5.16",
     "@types/chai": "4.3.20",
