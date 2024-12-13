@@ -28,7 +28,7 @@
     "@openzeppelin/test-helpers": "0.5.16",
     "@types/chai": "4.3.20",
     "@types/mocha": "10.0.10",
-    "@types/node": "22.10.1",
+    "@types/node": "22.10.2",
     "dotenv": "16.4.7",
     "ethers": "6.13.4",
     "hardhat": "2.22.17",
