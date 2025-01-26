@@ -25,7 +25,6 @@
   "description": "Collection of contracts and presets",
   "devDependencies": {
     "@ethberry/contracts-access": "5.0.53",
-    "@nomiclabs/hardhat-web3": "2.0.1",
     "@openzeppelin/test-helpers": "0.5.16",
     "@types/chai": "4.3.20",
     "@types/mocha": "10.0.10",
@@ -36,8 +35,7 @@
     "hardhat-deploy": "0.14.0",
     "solhint": "5.0.5",
     "solhint-plugin-prettier": "0.1.0",
-    "ts-node": "10.9.2",
-    "web3": "1.10.4"
+    "ts-node": "10.9.2"
   },
   "engines": {
     "node": ">=22"

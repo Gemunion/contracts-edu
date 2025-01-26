@@ -1,6 +1,6 @@
 import { expect } from "chai";
-import { ethers, web3 } from "hardhat";
-import { time } from "@openzeppelin/test-helpers";
+import { ethers } from "hardhat";
+import { time } from "@nomicfoundation/hardhat-network-helpers";
 
 import { amount, span, tokenId } from "@ethberry/contracts-constants";
 import { shouldBehaveLikeOwnable } from "@ethberry/contracts-access";
@@ -71,7 +71,7 @@ describe("AuctionERC721ETHTemplate", function () {
       const { templateInstance } = await factory();
 
       const current = await time.latestBlock();
-      await time.advanceBlockTo(current.add(web3.utils.toBN(span)));
+      await time.advanceBlockTo(current + span);
 
       const tx = templateInstance.connect(receiver).makeBid({ value: amount });
       await expect(tx).to.be.revertedWith("Auction: auction is already finished");
@@ -169,7 +169,7 @@ describe("AuctionERC721ETHTemplate", function () {
       const { templateInstance } = await factory();
 
       const current = await time.latestBlock();
-      await time.advanceBlockTo(current.add(web3.utils.toBN(span)));
+      await time.advanceBlockTo(current + span);
 
       const tx = templateInstance.cancelAuction();
       await expect(tx).to.be.revertedWith("Auction: auction is already finished");
@@ -192,7 +192,7 @@ describe("AuctionERC721ETHTemplate", function () {
       await erc721Instance.safeMint(await templateInstance.getAddress(), tokenId);
 
       const current = await time.latestBlock();
-      await time.advanceBlockTo(current.add(web3.utils.toBN(span)));
+      await time.advanceBlockTo(current + span);
 
       const tx = templateInstance.withdrawAsset();
       await expect(tx)
@@ -223,7 +223,7 @@ describe("AuctionERC721ETHTemplate", function () {
 
       const span = 300;
       const current = await time.latestBlock();
-      await time.advanceBlockTo(current.add(web3.utils.toBN(span)));
+      await time.advanceBlockTo(current + span);
 
       const tx = templateInstance.withdrawAsset();
       await expect(tx)
@@ -253,7 +253,7 @@ describe("AuctionERC721ETHTemplate", function () {
       const { templateInstance } = await factory();
 
       const current = await time.latestBlock();
-      await time.advanceBlockTo(current.add(web3.utils.toBN(span)));
+      await time.advanceBlockTo(current + span);
 
       const tx1 = await templateInstance.withdrawMoney();
       await expect(tx1).to.changeEtherBalance(owner, 0);
@@ -283,7 +283,7 @@ describe("AuctionERC721ETHTemplate", function () {
       await templateInstance.connect(stranger).makeBid({ value: amount * 2n });
 
       const current = await time.latestBlock();
-      await time.advanceBlockTo(current.add(web3.utils.toBN(span)));
+      await time.advanceBlockTo(current + span);
 
       const tx1 = await templateInstance.withdrawMoney();
       await expect(tx1).to.changeEtherBalance(owner, amount * 2n);

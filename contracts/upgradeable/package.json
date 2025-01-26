@@ -35,8 +35,7 @@
     "rimraf": "6.0.1",
     "solhint": "5.0.5",
     "solhint-plugin-prettier": "0.1.0",
-    "ts-node": "10.9.2",
-    "web3": "1.10.4"
+    "ts-node": "10.9.2"
   },
   "engines": {
     "node": ">=22"

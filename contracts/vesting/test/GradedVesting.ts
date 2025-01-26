@@ -1,6 +1,6 @@
 import { expect } from "chai";
-import { ethers, web3 } from "hardhat";
-import { time } from "@openzeppelin/test-helpers";
+import { ethers } from "hardhat";
+import { time } from "@nomicfoundation/hardhat-network-helpers";
 
 import { shouldBehaveLikeOwnable } from "@ethberry/contracts-access";
 import { amount, span } from "@ethberry/contracts-constants";
@@ -26,7 +26,7 @@ describe("GradedVesting", function () {
       await expect(tx).changeEtherBalances([vestingInstance, owner], [releaseable * -1n, releaseable]);
 
       const current = await time.latest();
-      await time.increaseTo(current.add(web3.utils.toBN(span)));
+      await time.increaseTo(current + span);
     }
   });
 
@@ -49,7 +49,7 @@ describe("GradedVesting", function () {
       );
 
       const current = await time.latest();
-      await time.increaseTo(current.add(web3.utils.toBN(span)));
+      await time.increaseTo(current + span);
     }
   });
 });

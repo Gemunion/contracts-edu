@@ -1,6 +1,6 @@
 import { expect } from "chai";
-import { ethers, web3 } from "hardhat";
-import { time } from "@openzeppelin/test-helpers";
+import { ethers } from "hardhat";
+import { time } from "@nomicfoundation/hardhat-network-helpers";
 
 import { deployERC20, deployVesting } from "./fixture";
 
@@ -32,6 +32,6 @@ export async function calc(name: string, month: number, percent: number) {
     );
 
     const current = await time.latest();
-    await time.increaseTo(current.add(web3.utils.toBN(span)));
+    await time.increaseTo(current + span);
   }
 }
