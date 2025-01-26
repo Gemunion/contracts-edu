@@ -5,8 +5,8 @@
     "url": "https://ethberry.io/"
   },
   "dependencies": {
-    "@ethberry/contracts-constants": "5.0.52",
-    "@ethberry/contracts-erc20": "5.0.52",
+    "@ethberry/contracts-constants": "5.0.53",
+    "@ethberry/contracts-erc20": "5.0.53",
     "@nomicfoundation/hardhat-chai-matchers": "2.0.8",
     "@nomicfoundation/hardhat-ethers": "3.0.8",
     "@nomicfoundation/hardhat-ignition": "0.15.9",
@@ -23,7 +23,7 @@
   },
   "description": "Collection of contracts and presets",
   "devDependencies": {
-    "@ethberry/contracts-access": "5.0.52",
+    "@ethberry/contracts-access": "5.0.53",
     "@nomiclabs/hardhat-web3": "2.0.1",
     "@openzeppelin/test-helpers": "0.5.16",
     "@types/chai": "4.3.20",
