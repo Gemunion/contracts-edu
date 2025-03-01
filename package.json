@@ -11,12 +11,12 @@
   },
   "devDependencies": {
     "@ethberry/eslint-config": "5.0.4",
-    "@types/node": "22.13.5",
+    "@types/node": "22.13.7",
     "husky": "9.1.7",
     "lint-staged": "15.4.3",
     "prettier": "3.5.2",
     "prettier-plugin-solidity": "1.4.2",
-    "typescript": "5.7.3"
+    "typescript": "5.8.2"
   },
   "engines": {
     "node": ">=22"
