@@ -33,11 +33,11 @@
     "@openzeppelin/test-helpers": "0.5.16",
     "@types/chai": "4.3.20",
     "@types/mocha": "10.0.10",
-    "@types/node": "22.13.9",
+    "@types/node": "22.13.10",
     "dotenv": "16.4.7",
     "ethers": "6.13.5",
     "hardhat": "2.22.19",
-    "hardhat-deploy": "0.14.0",
+    "hardhat-deploy": "0.14.1",
     "solhint": "5.0.5",
     "solhint-plugin-prettier": "0.1.0",
     "ts-node": "10.9.2"
